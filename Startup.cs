@@ -1,11 +1,15 @@
+using BookYourShow.Models;
+using BookYourShow.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +30,18 @@ namespace BookYourShow
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            //add dependency injection for DemoBlogDBContext
+            services.AddDbContext<BookYourShowContext>(item =>
+            item.UseSqlServer(Configuration.GetConnectionString("BookYourShowConnection")));
+
+            services.AddScoped<ISeatRepository, SeatRepository>();
+            services.AddControllers().AddNewtonsoftJson(
+                     options => {
+                         options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                         options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                     });
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
