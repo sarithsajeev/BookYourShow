@@ -9,6 +9,8 @@ namespace BookYourShow.ViewModel
     {
         public string UserName { get; set; }
         public decimal? ContactNumber { get; set; }
+        public string Movie { get; set; }
+        public string TheatreName { get; set; }
         public int? SeatNumber { get; set; }
         public int? TicketCount { get; set; }
     }
