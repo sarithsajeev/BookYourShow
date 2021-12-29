@@ -59,15 +59,23 @@ namespace BookYourShow.Controllers
         [ProducesResponseType(404)]
         public async Task<IActionResult> AddCrewMember([FromBody] Crew crewMember)
         {
-            Crew added = await crewRepo.AddCrewMember(crewMember);
-            if (added.MemberId > 0)
+            //check the validation of body
+            if (ModelState.IsValid)
             {
-                return Ok(added);
+
+
+                var memberId = await crewRepo.AddCrewMember(crewMember);
+                if (memberId != null)
+                {
+                    return Ok(memberId);
+                }
+                else
+                {
+                    return NotFound();
+                }
+
             }
-            else
-            {
-                return NotFound();
-            }
+            return BadRequest();
 
         }
         #endregion
@@ -79,15 +87,15 @@ namespace BookYourShow.Controllers
         public async Task<IActionResult> UpdateCrew([FromBody] Crew crewMember)
         {
 
-            Crew added = await crewRepo.UpdateCrewMember(crewMember);
-            if (added.MemberId > 0)
+            //Check the validation of body
+            if (ModelState.IsValid)
             {
-                return Ok(added);
+
+                await crewRepo.UpdateCrewMember(crewMember);
+                return Ok(crewMember);
+
             }
-            else
-            {
-                return NotFound();
-            }
+            return BadRequest();
 
         }
         #endregion
