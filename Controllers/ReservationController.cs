@@ -1,5 +1,6 @@
 ﻿using BookYourShow.Models;
 using BookYourShow.Repository;
+using BookYourShow.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -40,6 +41,26 @@ namespace BookYourShow.Controllers
             return BadRequest();
         }
 
+        #endregion
+
+        #region reserve seat
+        [HttpPut]
+        [ProducesResponseType(typeof(int), 200)]
+        [ProducesResponseType(400)]
+        [Route("seat")]
+        public async Task<IActionResult> ReserveSeat([FromBody] SeatsView reserve)
+        {
+            if (ModelState.IsValid)
+            {
+                var status = await ReservationRepo.ReserveSeat(reserve);
+                if (status)
+                {
+                    return Ok();
+                }
+                return BadRequest();
+            }
+            return BadRequest();
+        }
         #endregion
     }
 }
