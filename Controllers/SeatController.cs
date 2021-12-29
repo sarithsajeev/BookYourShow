@@ -90,12 +90,12 @@ namespace BookYourShow.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Route("seat/{id}")]
+        [Route("theatre/{tId}/seat/{id}")]
 
-        public async Task<IActionResult> GetSeatById(int id)
+        public async Task<IActionResult> GetSeatById(int id,int tId)
         {
 
-            var s = await seatRepo.GetSeatById(id);
+            var s = await seatRepo.GetSeatById(id,tId);
 
             if (s == null)
             {
@@ -105,6 +105,30 @@ namespace BookYourShow.Controllers
 
         }
 
+        #endregion
+
+        #region Delete a seat
+        [HttpDelete]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Route("Theatre/{tId}/Seats/{id}")]
+        public async Task<IActionResult> DeleteSeat(int id, int tId)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await seatRepo.DeleteSeat(id,tId);
+                    return Ok();
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+
+            }
+            return BadRequest();
+        }
         #endregion
     }
 }

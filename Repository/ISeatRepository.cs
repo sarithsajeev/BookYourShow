@@ -12,12 +12,15 @@ namespace BookYourShow.Repository
         Task<List<Seats>> GetSeats(int tId);
 
         //get seat by Id
-        Task<Seats> GetSeatById(int Id);
+        Task<Seats> GetSeatById(int Id,int tId);
 
         //add a new seat
         Task<int> AddSeat(Seats seat, int tId);
 
         //update seat
         Task UpdateSeat(Seats seat, int tId);
+
+        //delete a seat
+        Task<Seats> DeleteSeat(int id, int tId);
     }
 }

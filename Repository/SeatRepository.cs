@@ -35,7 +35,7 @@ namespace BookYourShow.Repository
 
         #region get seat by Id
 
-        public async Task<Seats> GetSeatById(int Id)
+        public async Task<Seats> GetSeatById(int Id,int tId)
         {
             var s = db.Seats.FirstOrDefault(em => em.SeatId == Id);
 
@@ -52,12 +52,14 @@ namespace BookYourShow.Repository
 
         public async Task<List<Seats>> GetSeats(int tId)
         {
-            if (db != null)
+            if (db != null )
+
             {
                 return await (from t in db.Theatre
                               from s in db.Seats
                               where tId == t.TheatreId &&
-                              t.TheatreId == s.TheatreId
+                              t.TheatreId == s.TheatreId &&
+                              s.IsActive==true
                               select new Seats
                               {
                                   SeatId = s.SeatId,
@@ -90,6 +92,24 @@ namespace BookYourShow.Repository
 
 
             }
+        }
+
+        #endregion
+
+        #region Delete Seat
+        public async Task<Seats> DeleteSeat(int id,int tId)
+        {
+            if (db != null)
+            {
+                Seats s = db.Seats.Find(id);
+                s.IsActive = false;
+                await db.SaveChangesAsync(); //commit the transaction
+                return s;
+
+
+            }
+            return null;
+
         }
 
         #endregion
