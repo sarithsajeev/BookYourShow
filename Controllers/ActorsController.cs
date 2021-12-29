@@ -59,15 +59,23 @@ namespace BookYourShow.Controllers
         [ProducesResponseType(404)]
         public async Task<IActionResult> AddActor([FromBody] Actors actor)
         {
-            Actors added = await actorRepo.AddActor(actor);
-            if (added.ActorId > 0)
+            //check the validation of body
+            if (ModelState.IsValid)
             {
-                return Ok(added);
+
+
+                var actorId = await actorRepo.AddActor(actor);
+                if (actorId != null)
+                {
+                    return Ok(actorId);
+                }
+                else
+                {
+                    return NotFound();
+                }
+
             }
-            else
-            {
-                return NotFound();
-            }
+            return BadRequest();
 
         }
         #endregion
@@ -79,15 +87,15 @@ namespace BookYourShow.Controllers
         public async Task<IActionResult> UpdateActor([FromBody] Actors actor)
         {
 
-            Actors added = await actorRepo.UpdateActor(actor);
-            if (added.ActorId > 0)
+            //Check the validation of body
+            if (ModelState.IsValid)
             {
-                return Ok(added);
+
+                await actorRepo.UpdateActor(actor);
+                return Ok(actor);
+
             }
-            else
-            {
-                return NotFound();
-            }
+            return BadRequest();
 
         }
         #endregion
