@@ -62,5 +62,37 @@ namespace BookYourShow.Controllers
             return BadRequest();
         }
         #endregion
+
+        #region all reservations
+        [HttpGet]
+        [ProducesResponseType(typeof(int), 200)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> GetReservations()
+        {
+            var reservations = await ReservationRepo.AllReservations();
+            if(reservations == null)
+            {
+                return NotFound();
+            }
+            return Ok(reservations);
+        }
+
+        #endregion
+
+        #region delete reservation
+        [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(int), 200)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> DeleteReservation(int id)
+        {
+            var delete = await ReservationRepo.DeleteReservation(id);
+            if(delete == false)
+            {
+                return NotFound();
+            }
+            return Ok();
+        }
+
+        #endregion
     }
 }

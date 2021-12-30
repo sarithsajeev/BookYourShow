@@ -22,5 +22,18 @@ namespace BookYourShow.Repository
         /// <param name="seats"></param>
         /// <returns> true if updated </returns>
         Task<bool> ReserveSeat(SeatsView seats);
+
+        /// <summary>
+        /// Get all reservations info
+        /// </summary>
+        /// <returns> List of reservations </returns>
+        Task<List<ReservationModel>> AllReservations();
+
+        /// <summary>
+        /// Delete a reservation.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> True if found and deleted </returns>
+        Task<bool> DeleteReservation(int id);
     }
 }
