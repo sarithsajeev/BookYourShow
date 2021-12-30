@@ -13,7 +13,7 @@ namespace BookYourShow.Controllers
     [ApiController]
     public class ActorsController : ControllerBase
     {
-        private readonly BookYourShowContext _context;
+        //private readonly BookYourShowContext _context;
         IActorRepo actorRepo;
 
         public ActorsController(BookYourShowContext context, IActorRepo repo)
