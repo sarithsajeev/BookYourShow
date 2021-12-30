@@ -37,6 +37,10 @@ namespace BookYourShow
             services.AddScoped<IActorRepo, ActorRepo>();
             services.AddScoped<ICrewRepo, CrewRepo>();
             services.AddScoped<ICastsRepo, CastsRepo>();
+            services.AddScoped<IMovieCrewRepo, MovieCrewRepo>();
+
+            //adding swagger service
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
