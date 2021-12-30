@@ -32,21 +32,21 @@ namespace BookYourShow.Models
         public virtual DbSet<Theatre> Theatre { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+      /*  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=SARITHPSAJEEV\\SQLEXPRESS; Initial Catalog=BookYourShow; Integrated security=True");
+                optionsBuilder.UseSqlServer("Data Source=MALAVIKAKNAIR\\SQLEXPRESS; Initial Catalog=BookYourShow; Integrated security=True");
             }
-        }
+        }*/
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Actors>(entity =>
             {
                 entity.HasKey(e => e.ActorId)
-                    .HasName("PK__Actors__57B3EA4B0715F34A");
+                    .HasName("PK__Actors__57B3EA4B6C9FEAB0");
 
                 entity.Property(e => e.ActorName)
                     .HasMaxLength(30)
@@ -56,7 +56,7 @@ namespace BookYourShow.Models
             modelBuilder.Entity<Casts>(entity =>
             {
                 entity.HasKey(e => e.CastId)
-                    .HasName("PK__Casts__68A1293C1CBE056B");
+                    .HasName("PK__Casts__68A1293CB20B0618");
 
                 entity.Property(e => e.RoleName)
                     .HasMaxLength(30)
@@ -65,12 +65,12 @@ namespace BookYourShow.Models
                 entity.HasOne(d => d.Actor)
                     .WithMany(p => p.Casts)
                     .HasForeignKey(d => d.ActorId)
-                    .HasConstraintName("FK__Casts__ActorId__4E88ABD4");
+                    .HasConstraintName("FK__Casts__ActorId__55F4C372");
 
                 entity.HasOne(d => d.Movie)
                     .WithMany(p => p.Casts)
                     .HasForeignKey(d => d.MovieId)
-                    .HasConstraintName("FK__Casts__MovieId__4F7CD00D");
+                    .HasConstraintName("FK__Casts__MovieId__56E8E7AB");
             });
 
             modelBuilder.Entity<City>(entity =>
@@ -92,7 +92,7 @@ namespace BookYourShow.Models
             modelBuilder.Entity<Crew>(entity =>
             {
                 entity.HasKey(e => e.MemberId)
-                    .HasName("PK__Crew__0CF04B183F661894");
+                    .HasName("PK__Crew__0CF04B18C4688BDA");
 
                 entity.Property(e => e.MemberName)
                     .HasMaxLength(30)
@@ -102,7 +102,7 @@ namespace BookYourShow.Models
             modelBuilder.Entity<Genres>(entity =>
             {
                 entity.HasKey(e => e.GenreId)
-                    .HasName("PK__Genres__0385057EECE4BD81");
+                    .HasName("PK__Genres__0385057EEE9BF931");
 
                 entity.Property(e => e.Genre)
                     .IsRequired()
@@ -113,7 +113,7 @@ namespace BookYourShow.Models
             modelBuilder.Entity<Languages>(entity =>
             {
                 entity.HasKey(e => e.LangId)
-                    .HasName("PK__Language__A5F312DE32252B78");
+                    .HasName("PK__Language__A5F312DE97356BAD");
 
                 entity.Property(e => e.Language)
                     .IsRequired()
@@ -124,17 +124,17 @@ namespace BookYourShow.Models
             modelBuilder.Entity<Likes>(entity =>
             {
                 entity.HasKey(e => e.LikeId)
-                    .HasName("PK__Likes__A2922C1461A2FA2B");
+                    .HasName("PK__Likes__A2922C149456AB58");
 
                 entity.HasOne(d => d.Movie)
                     .WithMany(p => p.Likes)
                     .HasForeignKey(d => d.MovieId)
-                    .HasConstraintName("FK__Likes__MovieId__5FB337D6");
+                    .HasConstraintName("FK__Likes__MovieId__5224328E");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Likes)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Likes__UserId__60A75C0F");
+                    .HasConstraintName("FK__Likes__UserId__531856C7");
             });
 
             modelBuilder.Entity<MovieCrew>(entity =>
@@ -146,18 +146,18 @@ namespace BookYourShow.Models
                 entity.HasOne(d => d.Member)
                     .WithMany(p => p.MovieCrew)
                     .HasForeignKey(d => d.MemberId)
-                    .HasConstraintName("FK__MovieCrew__Membe__52593CB8");
+                    .HasConstraintName("FK__MovieCrew__Membe__59C55456");
 
                 entity.HasOne(d => d.Movie)
                     .WithMany(p => p.MovieCrew)
                     .HasForeignKey(d => d.MovieId)
-                    .HasConstraintName("FK__MovieCrew__Movie__534D60F1");
+                    .HasConstraintName("FK__MovieCrew__Movie__5AB9788F");
             });
 
             modelBuilder.Entity<Movies>(entity =>
             {
                 entity.HasKey(e => e.MovieId)
-                    .HasName("PK__Movies__4BD2941A02974391");
+                    .HasName("PK__Movies__4BD2941A4D1F0E6C");
 
                 entity.Property(e => e.MovieDesc)
                     .IsRequired()
@@ -175,23 +175,23 @@ namespace BookYourShow.Models
                 entity.HasOne(d => d.Genre)
                     .WithMany(p => p.Movies)
                     .HasForeignKey(d => d.GenreId)
-                    .HasConstraintName("FK__Movies__GenreId__47DBAE45");
+                    .HasConstraintName("FK__Movies__GenreId__40058253");
 
                 entity.HasOne(d => d.Lang)
                     .WithMany(p => p.Movies)
                     .HasForeignKey(d => d.LangId)
-                    .HasConstraintName("FK__Movies__LangId__46E78A0C");
+                    .HasConstraintName("FK__Movies__LangId__3F115E1A");
 
                 entity.HasOne(d => d.Offer)
                     .WithMany(p => p.Movies)
                     .HasForeignKey(d => d.OfferId)
-                    .HasConstraintName("FK__Movies__OfferId__48CFD27E");
+                    .HasConstraintName("FK__Movies__OfferId__40F9A68C");
             });
 
             modelBuilder.Entity<Offers>(entity =>
             {
                 entity.HasKey(e => e.OfferId)
-                    .HasName("PK__Offers__8EBCF091DEF26025");
+                    .HasName("PK__Offers__8EBCF091AE56D75F");
 
                 entity.Property(e => e.OfferDescription)
                     .HasMaxLength(50)
@@ -211,18 +211,18 @@ namespace BookYourShow.Models
                 entity.HasOne(d => d.ShowTime)
                     .WithMany(p => p.Reservation)
                     .HasForeignKey(d => d.ShowTimeId)
-                    .HasConstraintName("FK__Reservati__ShowT__6B24EA82");
+                    .HasConstraintName("FK__Reservati__ShowT__47A6A41B");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Reservation)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Reservati__UserI__6C190EBB");
+                    .HasConstraintName("FK__Reservati__UserI__489AC854");
             });
 
             modelBuilder.Entity<Reviews>(entity =>
             {
                 entity.HasKey(e => e.ReviewId)
-                    .HasName("PK__Reviews__74BC79CEA434ADDF");
+                    .HasName("PK__Reviews__74BC79CEC6FECE23");
 
                 entity.Property(e => e.ReviewId).ValueGeneratedOnAdd();
 
@@ -240,7 +240,7 @@ namespace BookYourShow.Models
             modelBuilder.Entity<Seats>(entity =>
             {
                 entity.HasKey(e => e.SeatId)
-                    .HasName("PK__Seats__311713F3E9E4486E");
+                    .HasName("PK__Seats__311713F3C6244E15");
 
                 entity.Property(e => e.Row)
                     .HasMaxLength(5)
@@ -249,29 +249,27 @@ namespace BookYourShow.Models
                 entity.HasOne(d => d.Reservation)
                     .WithMany(p => p.Seats)
                     .HasForeignKey(d => d.ReservationId)
-                    .HasConstraintName("FK__Seats__Reservati__6FE99F9F");
+                    .HasConstraintName("FK__Seats__Reservati__4B7734FF");
 
                 entity.HasOne(d => d.Theatre)
                     .WithMany(p => p.Seats)
                     .HasForeignKey(d => d.TheatreId)
-                    .HasConstraintName("FK__Seats__TheatreId__70DDC3D8");
+                    .HasConstraintName("FK__Seats__TheatreId__4C6B5938");
             });
 
             modelBuilder.Entity<ShowTime>(entity =>
             {
-                entity.Property(e => e.ShowTimeStart)
-                    .HasColumnName("showTimeStart")
-                    .HasColumnType("datetime");
+                entity.Property(e => e.ShowTimeStart).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Movie)
                     .WithMany(p => p.ShowTime)
                     .HasForeignKey(d => d.MovieId)
-                    .HasConstraintName("FK__ShowTime__MovieI__68487DD7");
+                    .HasConstraintName("FK__ShowTime__MovieI__44CA3770");
 
                 entity.HasOne(d => d.Theatre)
                     .WithMany(p => p.ShowTime)
                     .HasForeignKey(d => d.TheatreId)
-                    .HasConstraintName("FK__ShowTime__Theatr__6754599E");
+                    .HasConstraintName("FK__ShowTime__Theatr__43D61337");
             });
 
             modelBuilder.Entity<Theatre>(entity =>
@@ -287,28 +285,23 @@ namespace BookYourShow.Models
                 entity.HasOne(d => d.City)
                     .WithMany(p => p.Theatre)
                     .HasForeignKey(d => d.CityId)
-                    .HasConstraintName("FK__Theatre__CityId__4BAC3F29");
+                    .HasConstraintName("FK__Theatre__CityId__367C1819");
             });
 
             modelBuilder.Entity<Users>(entity =>
             {
                 entity.HasKey(e => e.UserId)
-                    .HasName("PK__Users__1788CC4CD8B20C47");
+                    .HasName("PK__Users__1788CC4CABA0A401");
 
                 entity.Property(e => e.ContactNumber).HasColumnType("numeric(18, 0)");
 
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .IsUnicode(false);
+                entity.Property(e => e.Email).IsUnicode(false);
 
                 entity.Property(e => e.Password)
-                    .IsRequired()
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
-                entity.Property(e => e.UserName)
-                    .IsRequired()
-                    .IsUnicode(false);
+                entity.Property(e => e.UserName).IsUnicode(false);
             });
 
             OnModelCreatingPartial(modelBuilder);
