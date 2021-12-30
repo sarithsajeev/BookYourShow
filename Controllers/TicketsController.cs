@@ -29,11 +29,15 @@ namespace BookYourShow.Controllers
         {
 
             var ticket = await t.ViewTickets(id);
-            if (ticket != null)
+            if (ticket== null|| ticket.Count==0)
+            {
+                return NotFound();
+
+            }
+            else
             {
                 return Ok(ticket);
             }
-            return NotFound();
 
         }
         #endregion
