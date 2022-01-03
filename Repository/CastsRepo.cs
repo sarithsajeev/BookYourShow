@@ -17,7 +17,7 @@ namespace BookYourShow.Repository
         }
 
         //Get all casts in a movie
-        public async Task<List<Casts>> GetCasts(int id)
+        public async Task<List<CastViewModel>> GetCasts(int id)
         {
             if (db != null)
             {

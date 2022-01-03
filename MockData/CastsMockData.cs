@@ -7,5 +7,6 @@ namespace BookYourShow.MockData
 {
     public class CastsMockData
     {
+
     }
 }

@@ -3,13 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookYourShow.V
 
 namespace BookYourShow.Repository
 {
     public  interface ICastsRepo
     {
         //Get all casts in a movie
-        Task<List<Casts>> GetCasts(int id);
+        Task<List<CastViewModel>> GetCasts(int id);
 
         //Get cast by id
         Task<Casts> GetCast(int id);
