@@ -1,6 +1,9 @@
+using BookYourShow.Models;
+using BookYourShow.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,10 +27,14 @@ namespace BookYourShow.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add services over here.
+            services.AddControllers();
+            //--- add dependency injection for CMSDBContext ---//
+            services.AddDbContext<BookYourShowContext>(
+                item => item.UseSqlServer(Configuration.GetConnectionString("ConStr"))
+                );
 
-            //.......................
-
+            //--- add dependency injection ---//
+            services.AddScoped<ITicketsRepo, TicketsRepo>();
             services.AddSwaggerGen();
             services.AddCors();
             services.AddControllers();
