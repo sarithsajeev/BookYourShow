@@ -34,7 +34,7 @@ namespace BookYourShow.Repository
         /// </summary>
         /// <param name="events"></param>
         /// <returns></returns>
-        Task UpdateLike(Likes like);
+        Task<bool> UpdateLike(Likes like);
 
 
 

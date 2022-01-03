@@ -78,14 +78,16 @@ namespace BookYourShow.Repository
             return null;
         }
 
-        public async Task UpdateLike(Likes like)
+        public async Task<bool> UpdateLike(Likes like)
         {
             if (db != null)
             {
                 db.Likes.Update(like);
                 await db.SaveChangesAsync();//commit the transaction
+                return true;
 
             }
+            return false;
         }
     }
 }

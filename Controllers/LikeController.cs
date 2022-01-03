@@ -58,10 +58,14 @@ namespace BookYourShow.Controllers
             //check the validation of body
             if (ModelState.IsValid)
             {
+                
+                var like = await likeRepository.UpdateLike(model);
+                if (like)
+                {
+                    return Ok(like);
+                }
 
-                await likeRepository.UpdateLike(model);
-                return Ok();
-
+                return BadRequest();
             }
             return BadRequest();
         }
