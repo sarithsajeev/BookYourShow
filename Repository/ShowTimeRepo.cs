@@ -80,14 +80,17 @@ namespace BookYourShow.Repository
             return null;
         }
 
-        public async Task UpdateShowTime(ShowTime showtime)
+        public async Task<bool> UpdateShowTime(ShowTime showtime)
         {
             if (db != null)
             {
                 db.ShowTime.Update(showtime);
                 await db.SaveChangesAsync(); //commit the transaction
+                return true;
+
 
             }
+            return false;
         }
     }
 }

@@ -25,6 +25,6 @@ namespace BookYourShow.Repository
 
         Task<ShowTimeView> GetShowTimeById(int id);
 
-        Task UpdateShowTime(ShowTime showtime);
+        Task<bool> UpdateShowTime(ShowTime showtime);
     }
 }

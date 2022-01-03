@@ -69,9 +69,12 @@ namespace BookYourShow.Controllers
             //check the validation of body
             if (ModelState.IsValid)
             {
-
-                await showtimeRepository.UpdateShowTime(model);
-                return Ok();
+                var show=await showtimeRepository.UpdateShowTime(model);
+                if(show)
+                {
+                    return Ok(show);
+                }
+                return BadRequest();
 
             }
             return BadRequest();
