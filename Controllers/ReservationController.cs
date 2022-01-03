@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BookYourShow.Controllers
 {
-    [Route("reservation")]
+    [Route("reservations")]
     [ApiController]
     public class ReservationController : ControllerBase
     {
@@ -47,7 +47,7 @@ namespace BookYourShow.Controllers
         [HttpPut]
         [ProducesResponseType(typeof(int), 200)]
         [ProducesResponseType(400)]
-        [Route("seat")]
+        [Route("seats")]
         public async Task<IActionResult> ReserveSeat([FromBody] SeatsView reserve)
         {
             if (ModelState.IsValid)
