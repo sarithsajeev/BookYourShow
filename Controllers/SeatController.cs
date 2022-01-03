@@ -107,7 +107,7 @@ namespace BookYourShow.Controllers
 
         #endregion
 
-        #region Delete a seat
+       /* #region Delete a seat
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -129,6 +129,6 @@ namespace BookYourShow.Controllers
             }
             return BadRequest();
         }
-        #endregion
+        #endregion*/
     }
 }

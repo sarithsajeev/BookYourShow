@@ -96,7 +96,7 @@ namespace BookYourShow.Repository
 
         #endregion
 
-        #region Delete Seat
+       /* #region Delete Seat
         public async Task<Seats> DeleteSeat(int id,int tId)
         {
             if (db != null)
@@ -112,7 +112,7 @@ namespace BookYourShow.Repository
 
         }
 
-        #endregion
+        #endregion*/
 
     }
 }
