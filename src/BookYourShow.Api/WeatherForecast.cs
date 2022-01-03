@@ -1,6 +1,6 @@
 using System;
 
-namespace BookYourShow
+namespace BookYourShow.Api
 {
     public class WeatherForecast
     {
