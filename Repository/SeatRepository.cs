@@ -96,23 +96,7 @@ namespace BookYourShow.Repository
 
         #endregion
 
-       /* #region Delete Seat
-        public async Task<Seats> DeleteSeat(int id,int tId)
-        {
-            if (db != null)
-            {
-                Seats s = db.Seats.Find(id);
-                s.IsActive = false;
-                await db.SaveChangesAsync(); //commit the transaction
-                return s;
-
-
-            }
-            return null;
-
-        }
-
-        #endregion*/
+     
 
     }
 }

@@ -107,28 +107,6 @@ namespace BookYourShow.Controllers
 
         #endregion
 
-       /* #region Delete a seat
-        [HttpDelete]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Route("Theatre/{tId}/Seats/{id}")]
-        public async Task<IActionResult> DeleteSeat(int id, int tId)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    await seatRepo.DeleteSeat(id,tId);
-                    return Ok();
-                }
-                catch (Exception)
-                {
-                    return BadRequest();
-                }
-
-            }
-            return BadRequest();
-        }
-        #endregion*/
+      
     }
 }

@@ -20,7 +20,6 @@ namespace BookYourShow.Repository
         //update seat
         Task UpdateSeat(Seats seat, int tId);
 
-        //delete a seat
-       // Task<Seats> DeleteSeat(int id, int tId);
+       
     }
 }
