@@ -81,8 +81,12 @@ namespace BookYourShow.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                await movieRepository.UpdateMovie(movie);
-                return Ok(movie);
+                
+                var updated = await movieRepository.UpdateMovie(movie);
+                if(updated != null)
+                    return Ok(movie);
+                else
+                    return BadRequest();
             }
             return BadRequest();
         }

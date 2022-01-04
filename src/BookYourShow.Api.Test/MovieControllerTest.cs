@@ -82,7 +82,31 @@ namespace BookYourShow.Api.Test
             //assert
             Assert.IsType<OkObjectResult>(result);
         }
-     
+        [Fact]
+        public async void AddMovieFailTest()
+        {
+            //arrange
+            var mRepo = new Mock<IMovieRepository>();
+            var controller = new MoviesController(mRepo.Object);
+            var _lead = new Movies()
+            {
+                MovieId = 1,
+                MovieTitle = "Spider Man",
+                MovieDesc = "Spider Man Movie",
+                MovieRelease = DateTime.Parse("2002-12-12T00:00:00"),
+                LangId = 1,
+                GenreId = 2,
+                OfferId = 1,
+                IsActive = true
+            };
+
+            //act
+            var result = await controller.AddMovie(_lead);
+
+            //assert
+            Assert.IsType<NotFoundResult>(result);
+        }
+
         #endregion
         #region UpdateMovieTest
         [Fact]
@@ -107,7 +131,27 @@ namespace BookYourShow.Api.Test
             //assert
             Assert.IsType<OkObjectResult>(result);
         }
-   
+        [Fact]
+        public async void UpdateMoviesFailTest()
+        {
+            var mRepo = new Mock<IMovieRepository>();
+            var controller = new MoviesController(mRepo.Object);
+            var seats = new Movies()
+            {
+                MovieId = 14,
+                MovieTitle = "The Martian III",
+                MovieDesc = "The Martian III Movie",
+                MovieRelease = DateTime.Parse("11-12-2017"),
+                LangId = 1,
+                GenreId = 2,
+                OfferId = 1,
+                IsActive = true
+            };
+
+            var result = await controller.UpdateMovie(seats);
+
+            Assert.IsType<BadRequestResult>(result);
+        }
         #endregion
         #region DeleteTest
         [Fact]
