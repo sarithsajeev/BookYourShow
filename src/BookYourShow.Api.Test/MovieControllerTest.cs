@@ -25,6 +25,14 @@ namespace BookYourShow.Api.Test
             //assert
             Assert.IsType<OkObjectResult>(result);
         }
+        [Fact]
+        public async void GetMoviesFailTest()
+        {
+            var mockRepo = new Mock<IMovieRepository>();
+            var controller = new MoviesController(mockRepo.Object);
+            var result = await controller.GetAllMovies();
+            Assert.IsType<NotFoundResult>(result);
+        }
         #endregion
         #region GetByIdTest
         [Fact]
@@ -74,8 +82,7 @@ namespace BookYourShow.Api.Test
             //assert
             Assert.IsType<OkObjectResult>(result);
         }
-
-
+     
         #endregion
         #region UpdateMovieTest
         [Fact]
@@ -100,7 +107,7 @@ namespace BookYourShow.Api.Test
             //assert
             Assert.IsType<OkObjectResult>(result);
         }
-
+   
         #endregion
         #region DeleteTest
         [Fact]
