@@ -1,13 +1,13 @@
-using BookYourShow.Repository;
+using BookYourShow.Api.Repository;
 using System;
 using Xunit;
 using Moq;
 using BookYourShow.MockData;
-using BookYourShow.Controllers;
+using BookYourShow.Api.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using BookYourShow.Models;
 
-namespace CrewApiTest
+namespace BookYourShow.Api.Test
 {
     public class CrewApi
     {

@@ -1,5 +1,5 @@
-using BookYourShow.Controllers;
-using BookYourShow.Repository;
+using BookYourShow.Api.Controllers;
+using BookYourShow.Api.Repository;
 using BookYourShow.MockData;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -7,7 +7,8 @@ using Xunit;
 using Moq;
 using BookYourShow.Models;
 
-namespace ActorsTest
+namespace  BookYourShow.Api.Test
+
 {
     public class ActorsApi
     {

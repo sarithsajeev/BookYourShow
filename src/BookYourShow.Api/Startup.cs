@@ -1,5 +1,5 @@
 using BookYourShow.Models;
-using BookYourShow.Repository;
+using BookYourShow.Api.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BookYourShow
+namespace BookYourShow.Api
 {
     public class Startup
     {

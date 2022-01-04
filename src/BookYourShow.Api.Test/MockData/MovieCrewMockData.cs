@@ -1,13 +1,14 @@
-﻿using BookYourShow.Repository;
-using BookYourShow.ViewModel;
+﻿using BookYourShow.Api.Repository;
+using BookYourShow.Api.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Moq;
 using BookYourShow.Models;
+using BookYourShow.Api.Controllers;
 
-namespace BookYourShow.MockData
+namespace BookYourShow.Api.Test.MockData
 {
     public class MovieCrewMockData
     {

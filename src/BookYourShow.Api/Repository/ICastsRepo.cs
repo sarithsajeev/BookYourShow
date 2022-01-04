@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BookYourShow.ViewModel;
+using BookYourShow.Api.ViewModel;
 
-namespace BookYourShow.Repository
+namespace BookYourShow.Api.Repository
 {
     public  interface ICastsRepo
     {

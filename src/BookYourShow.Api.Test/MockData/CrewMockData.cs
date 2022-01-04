@@ -1,14 +1,14 @@
 ﻿using BookYourShow.Models;
-using BookYourShow.Repository;
+using BookYourShow.Api.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Moq;
-using BookYourShow.Controllers;
+using BookYourShow.Api.Controllers;
 
 
-namespace BookYourShow.MockData
+namespace BookYourShow.Api.Test.MockData
 {
     public class CrewMockData
     {

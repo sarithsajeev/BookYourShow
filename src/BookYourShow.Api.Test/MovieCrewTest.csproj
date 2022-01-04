@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BookYourShow\BookYourShow.csproj" />
+    <ProjectReference Include="..\BookYourShow.Api\BookYourShow.Api.csproj" />
   </ItemGroup>
 
 </Project>

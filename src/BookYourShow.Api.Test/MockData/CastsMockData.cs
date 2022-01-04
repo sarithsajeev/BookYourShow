@@ -1,13 +1,14 @@
 ﻿using BookYourShow.Models;
-using BookYourShow.Repository;
-using BookYourShow.ViewModel;
+using BookYourShow.Api.Repository;
+using BookYourShow.Api.Controllers;
+using BookYourShow.Api.ViewModel;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BookYourShow.MockData
+namespace BookYourShow.Api.Test.MockData
 {
     public class CastsMockData
     {

@@ -1,13 +1,13 @@
-using BookYourShow.Controllers;
+using BookYourShow.Api.Controllers;
 using BookYourShow.MockData;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using Xunit;
 using Moq;
-using BookYourShow.Repository;
+using BookYourShow.Api.Repository;
 using BookYourShow.Models;
 
-namespace CastsApiTest
+namespace BookYourShow.Api.Test
 {
     public class CastsApi
     {

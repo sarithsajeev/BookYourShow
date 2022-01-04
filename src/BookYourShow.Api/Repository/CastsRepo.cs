@@ -1,12 +1,12 @@
 ﻿using BookYourShow.Models;
-using BookYourShow.ViewModel;
+using BookYourShow.Api.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BookYourShow.Repository
+namespace BookYourShow.Api.Repository
 {
     public class CastsRepo: ICastsRepo
     {
