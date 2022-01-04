@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 namespace BookYourShow.Api.ViewModel
 {
     public class SampleViewModel
-    {
+    { 
     }
 }
