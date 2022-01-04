@@ -28,7 +28,6 @@ namespace BookYourShow.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            //--- add dependency injection for CMSDBContext ---//
             services.AddDbContext<BookYourShowContext>(
                 item => item.UseSqlServer(Configuration.GetConnectionString("ConStr"))
                 );
