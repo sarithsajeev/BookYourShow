@@ -17,7 +17,7 @@ namespace BookYourShow.Api.Test
         {
             //arrange
             var mockRepo = new Mock<ILanguageRepository>();
-            mockRepo.Setup(n => n.GetLanguages()).Returns(MockData.MoviesMockData.GetLanguages());
+            mockRepo.Setup(n => n.GetLanguages()).Returns(MockData.LanguagesMockData.GetLanguages());
             var controller = new LanguagesController(mockRepo.Object);
             //act
             var result = await controller.GetLanguages();
@@ -28,7 +28,7 @@ namespace BookYourShow.Api.Test
         public async void AddLanguageTest()
         {
             //arrange
-            var mRepo = MockData.MoviesMockData.AddLanguageTest();
+            var mRepo = MockData.LanguagesMockData.AddLanguageTest();
             var controller = new LanguagesController(mRepo.Object);
             var _lead = new Languages()
             {
@@ -45,7 +45,7 @@ namespace BookYourShow.Api.Test
         public async void DeleteLanguageTest()
         {
             //arrange
-            var mRepo = MockData.MoviesMockData.DeleteLanguageMock();
+            var mRepo = MockData.LanguagesMockData.DeleteLanguageMock();
             var controller = new LanguagesController(mRepo.Object);
             //act
             var result = await controller.DeleteLanguage(6);
@@ -55,7 +55,7 @@ namespace BookYourShow.Api.Test
         public async void DeleteLanguageTest_Returns_NotFound()
         {
             //arrange
-            var mRepo = MockData.MoviesMockData.DeleteLanguageMock();
+            var mRepo = MockData.LanguagesMockData.DeleteLanguageMock();
             var controller = new LanguagesController(mRepo.Object);
             //act
             var result = await controller.DeleteLanguage(15);

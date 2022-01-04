@@ -17,7 +17,7 @@ namespace BookYourShow.Api.Test
         {
             //arrange
             var mockRepo = new Mock<IGenreRepository>();
-            mockRepo.Setup(n => n.GetGenres()).Returns(MockData.MoviesMockData.GetGenres());
+            mockRepo.Setup(n => n.GetGenres()).Returns(MockData.GenresMockData.GetGenres());
             var controller = new GenresController(mockRepo.Object);
             //act
             var result = await controller.GetGenres();
@@ -28,7 +28,7 @@ namespace BookYourShow.Api.Test
         public async void AddGenreTest()
         {
             //arrange
-            var mRepo = MockData.MoviesMockData.AddGenreTest();
+            var mRepo = MockData.GenresMockData.AddGenreTest();
             var controller = new GenresController(mRepo.Object);
             var _lead = new Genres()
             {
@@ -45,7 +45,7 @@ namespace BookYourShow.Api.Test
         public async void DeleteGentreTest()
         {
             //arrange
-            var mRepo = MockData.MoviesMockData.DeleteGenreMock();
+            var mRepo = MockData.GenresMockData.DeleteGenreMock();
             var controller = new GenresController(mRepo.Object);
             //act
             var result = await controller.DeleteGenre(5);
@@ -55,7 +55,7 @@ namespace BookYourShow.Api.Test
         public async void DeleteGentreTest_Returns_NotFound()
         {
             //arrange
-            var mRepo = MockData.MoviesMockData.DeleteGenreMock();
+            var mRepo = MockData.GenresMockData.DeleteGenreMock();
             var controller = new GenresController(mRepo.Object);
             //act
             var result = await controller.DeleteGenre(15);
