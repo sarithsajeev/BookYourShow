@@ -54,12 +54,9 @@ namespace BookYourShow.Api.Test.MockData
             {
                 offers.Add(offer);
                 return offer;
-
             });
             return mockRepo;
-
         }
-
         public static Mock<IOfferRepository> UpdateOfferTest()
         {
             var offers = new Offers()
@@ -72,7 +69,6 @@ namespace BookYourShow.Api.Test.MockData
             mockRepo.Setup(r => r.UpdateOffers(It.IsAny<Offers>())).ReturnsAsync(offers);
             return mockRepo;
         }
-
         public static Mock<IOfferRepository> GetOfferByMovieId()
         {
             var offer = new List<OfferViewModel>()
@@ -94,6 +90,5 @@ namespace BookYourShow.Api.Test.MockData
             mockRepo.Setup(r => r.GetOfferByMovieId(1)).ReturnsAsync(offer);
             return mockRepo;
         }
-
     }
 }

@@ -16,7 +16,6 @@ namespace BookYourShow.Api.Repository
         {
             _db = db;
         }
-
         /// <summary>
         /// Get Offer By Movie 
         /// </summary>
@@ -38,16 +37,16 @@ namespace BookYourShow.Api.Repository
                                   OfferId = b.OfferId,
                                   OfferName = b.OfferName,
                                   OfferDescription = b.OfferDescription
-
-
                               }).ToListAsync();
             }
             return null;
         }
-
-
         #endregion
-
+        /// <summary>
+        /// Get offer id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         #region Get Movie Offer By Movie Id
         public async Task<List<OfferViewModel>> GetOfferByMovieId(int id)
         {
@@ -66,16 +65,16 @@ namespace BookYourShow.Api.Repository
                                   OfferId = b.OfferId,
                                   OfferName = b.OfferName,
                                   OfferDescription = b.OfferDescription
-
-
                               }).ToListAsync();
             }
             return null;
         }
-
-
         #endregion
-
+        /// <summary>
+        /// Add offer
+        /// </summary>
+        /// <param name="offer"></param>
+        /// <returns></returns>
         #region Add Offers
         public async Task<Offers> AddOffers(Offers offer)
         {
@@ -88,7 +87,11 @@ namespace BookYourShow.Api.Repository
             return null;
         }
         #endregion
-
+        /// <summary>
+        /// update offer
+        /// </summary>
+        /// <param name="offer"></param>
+        /// <returns></returns>
         #region
         public async Task<Offers> UpdateOffers(Offers offer)
         {

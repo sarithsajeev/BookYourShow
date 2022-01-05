@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BookYourShow.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("Offers")]
     [ApiController]
     public class OfferController : ControllerBase
     {
@@ -20,12 +20,10 @@ namespace BookYourShow.Api.Controllers
         {
             offerRepository = p;
         }
-
         #region Get Offer By movie
         [HttpGet]
         [ProducesResponseType(typeof(OfferViewModel), 200)]
         [ProducesResponseType(404)]
-
         public async Task<IActionResult> OfferByMovie()
         {
             var offer = await offerRepository.OfferByMovie();
@@ -36,9 +34,7 @@ namespace BookYourShow.Api.Controllers
             return Ok(offer);
         }
         #endregion
-
         #region get offer by id
-
         [HttpGet]
         [Route("/{id}")]
         [ProducesResponseType(typeof(OfferViewModel), 200)]
@@ -54,7 +50,6 @@ namespace BookYourShow.Api.Controllers
             return Ok(offer);
         }
         #endregion
-
         #region Add Offers
         [HttpPost]
         [ProducesResponseType(typeof(Offers), 200)]
@@ -71,7 +66,6 @@ namespace BookYourShow.Api.Controllers
         }
 
         #endregion
-
         #region Update Offers
         [HttpPut]
         [ProducesResponseType(typeof(Offers), 200)]
