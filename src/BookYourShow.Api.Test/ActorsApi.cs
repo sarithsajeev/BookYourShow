@@ -17,8 +17,7 @@ namespace  BookYourShow.Api.Test
         {
             //arrange
             var mockRepo = new Mock<IActorRepo>();
-            mockRepo.Setup(n => n.GetActors()).Returns(ActorsMockData.GetActors_Mock());
-          
+            mockRepo.Setup(n => n.GetActors()).Returns(ActorsMockData.GetActors_Mock());   
             //act
             var controller = new ActorsController(mockRepo.Object);
             var result = await controller.GetActors();
@@ -39,17 +38,10 @@ namespace  BookYourShow.Api.Test
                 ActorName="John Abraham",
                 IsActive = true
             };
-
-
             //act
             var result = await controller.AddActor(_actor);
-
-
             //assert
             Assert.IsType<OkObjectResult>(result);
-
-
-
         }
 
         [Fact]
@@ -64,13 +56,10 @@ namespace  BookYourShow.Api.Test
                 ActorName = "Tom Hiddleston",
                 IsActive = true
             };
-
             //act
             var result = await controller.UpdateActor(_actor);
-
             //assert
             Assert.IsType<OkObjectResult>(result);
-
         }
 
         [Fact]
@@ -83,7 +72,6 @@ namespace  BookYourShow.Api.Test
             var result = await controller.DeleteActor(13);
             Assert.IsType<OkObjectResult>(result);
         }
-
 
         [Fact]
         public async void DeleteActor_ReturnsNotFound()

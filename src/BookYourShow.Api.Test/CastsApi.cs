@@ -18,7 +18,6 @@ namespace BookYourShow.Api.Test
             var mockRepo = new Mock<ICastsRepo>();
             int id = 1;
             mockRepo.Setup(n => n.GetCasts(id)).Returns(CastsMockData.GetCastsByMovieId_Mock());
-
             //act
             var controller = new CastsController(mockRepo.Object);
             var result = await controller.GetCasts(id);
@@ -51,17 +50,10 @@ namespace BookYourShow.Api.Test
                 RoleName = "Captain America",
                 MovieId = 1
             };
-
-
             //act
             var result = await controller.AddCast(cast);
-
-
             //assert
             Assert.IsType<OkObjectResult>(result);
-
-
-
         }
 
         [Fact]
@@ -77,10 +69,8 @@ namespace BookYourShow.Api.Test
                 RoleName = "Captain America Jr.",
                 MovieId = 1
             };
-
             //act
             var result = await controller.UpdateCast(cast);
-
             //assert
             Assert.IsType<OkObjectResult>(result);
 
@@ -95,9 +85,6 @@ namespace BookYourShow.Api.Test
             //act
             var result = await controller.DeleteCast(3);
             Assert.IsType<OkObjectResult>(result);
-        }
-
-
-      
+        }   
     }
 }

@@ -18,7 +18,6 @@ namespace BookYourShow.Api.Test
             var mockRepo = new Mock<IMovieCrewRepo>();
             int id = 10;
             mockRepo.Setup(n => n.GetCrewMembers(id)).Returns(MovieCrewMockData.GetMovieCrews());
- 
             //act
             var controller = new MovieCrewController(mockRepo.Object);
             var result = await controller.GetMovieCrewMembers(id);
@@ -52,17 +51,10 @@ namespace BookYourShow.Api.Test
                 RoleName = "Director",
                 MovieId = 1
             };
-
-
             //act
             var result = await controller.AddCrewMember(crew);
-
-
             //assert
             Assert.IsType<OkObjectResult>(result);
-
-
-
         }
 
         [Fact]
@@ -78,13 +70,10 @@ namespace BookYourShow.Api.Test
                 RoleName = "Screenplay",
                 MovieId = 1
             };
-
             //act
             var result = await controller.UpdateCrewMember(crew);
-
             //assert
             Assert.IsType<OkObjectResult>(result);
-
         }
 
         [Fact]

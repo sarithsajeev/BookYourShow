@@ -13,12 +13,12 @@ namespace BookYourShow.Api.Controllers
     [ApiController]
     public class MovieCrewController : ControllerBase
     {
-       // private readonly BookYourShowContext _context;
+       
         IMovieCrewRepo movieCrewRepo;
 
         public MovieCrewController(IMovieCrewRepo repo)
         {
-           // this._context = context;
+           
             movieCrewRepo = repo;
         }
 

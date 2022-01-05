@@ -13,7 +13,7 @@ namespace BookYourShow.Api.Controllers
     [ApiController]
     public class CastsController : ControllerBase
     {
-       // private readonly BookYourShowContext _context;
+       
         ICastsRepo castsRepo;
 
         public CastsController(ICastsRepo repo)

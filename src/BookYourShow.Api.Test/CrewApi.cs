@@ -12,7 +12,6 @@ namespace BookYourShow.Api.Test
     public class CrewApi
     {
         [Fact]
-
         public async void GetMembers_test()
         {
             //arrange
@@ -37,17 +36,10 @@ namespace BookYourShow.Api.Test
                 MemberName="John Philip",
                 IsActive = true
             };
-
-
             //act
             var result = await controller.AddCrewMember(_member);
-
-
             //assert
             Assert.IsType<OkObjectResult>(result);
-           
-
-
         }
 
         [Fact]
@@ -62,13 +54,10 @@ namespace BookYourShow.Api.Test
                 MemberName="Jomon T John",
                 IsActive = true
             };
-
             //act
             var result = await controller.UpdateCrew(_member);
-
             //assert
             Assert.IsType<OkObjectResult>(result);
-
         }
 
         [Fact]

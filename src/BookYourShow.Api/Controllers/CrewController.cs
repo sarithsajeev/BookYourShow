@@ -13,7 +13,7 @@ namespace BookYourShow.Api.Controllers
     [ApiController]
     public class CrewController : ControllerBase
     {
-        //private readonly BookYourShowContext _context;
+        
         ICrewRepo crewRepo;
 
         public CrewController( ICrewRepo repo)
