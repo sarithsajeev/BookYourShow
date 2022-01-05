@@ -61,9 +61,6 @@ namespace BookYourShow.Api.Test
 
             //assert
             Assert.IsType<OkObjectResult>(result);
-            /*Assert.Equal("Index", redirectToActionResult.ToString());*/
-            /*Assert.Null(redirectToActionResult.ControllerName);*/
-
         }
 
 
@@ -87,8 +84,6 @@ namespace BookYourShow.Api.Test
 
             //assert
             Assert.IsType<BadRequestResult>(result);
-            /*Assert.Equal("Index", redirectToActionResult.ToString());*/
-            /*Assert.Null(redirectToActionResult.ControllerName);*/
 
         }
 
