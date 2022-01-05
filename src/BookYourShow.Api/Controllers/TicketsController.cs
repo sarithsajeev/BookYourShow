@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookYourShow.Controllers
 {
-    [Route("[Tickets]")]
+    [Route("tickets")]
     [ApiController]
     public class TicketsController : ControllerBase
     {
