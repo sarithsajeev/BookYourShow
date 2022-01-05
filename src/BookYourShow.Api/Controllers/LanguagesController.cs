@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookYourShow.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("languages")]
     [ApiController]
     public class LanguagesController : ControllerBase
     {

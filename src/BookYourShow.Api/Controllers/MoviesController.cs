@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookYourShow.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("movies")]
     [ApiController]
     public class MoviesController : ControllerBase
     {
