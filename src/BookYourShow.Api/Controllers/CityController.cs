@@ -1,5 +1,5 @@
-﻿using BookYourShow.Models;
-using BookYourShow.Repository;
+﻿using BookYourShow.Api.Repository;
+using BookYourShow.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookYourShow.Controllers
 {
-    [Route("[controller]")]
+    [Route("city")]
     [ApiController]
     public class CityController : ControllerBase
     {
@@ -19,12 +19,12 @@ namespace BookYourShow.Controllers
             postRepository = _p;
         }
 
-        #region Get city 
+        #region Get cities 
 
         [HttpGet]
         [ProducesResponseType(typeof(City), 200)]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> GetCity()
+        public async Task<IActionResult> GetCities()
         {
 
             var cities = await postRepository.GetCities();
@@ -67,7 +67,7 @@ namespace BookYourShow.Controllers
 
 
         #region update city
-        [HttpPut]
+        [HttpPut("{Id}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public async Task<IActionResult> UpdateCity(City city)
@@ -110,7 +110,7 @@ namespace BookYourShow.Controllers
 
         #region UpdateCityActiveStatus
 
-        [HttpDelete("{id}")]
+        [HttpPut("status/{id}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public async Task<IActionResult> UpdateCityActiveStatus(int id)
