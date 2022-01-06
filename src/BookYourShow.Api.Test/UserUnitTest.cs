@@ -9,25 +9,25 @@ using Xunit;
 
 namespace BookYourShow.Api.Test
 {
-    public class UnitTest1
+    public class UserUnitTest
     {
         [Fact]
         public async void GetAllTest()
         {
-            //arrange
+
             var mockRepo = new Mock<IUserRepository>();
             mockRepo.Setup(n => n.GetUsers()).Returns(mockdata.GetUserDetails);
-            //act
+            
             var controller = new UserController(mockRepo.Object);
             var result = await controller.GetUsers();
-            //assert
+            
             Assert.IsType<OkObjectResult>(result);
         }
 
         [Fact]
         public async void AddUserTest()
         {
-            //arrange
+            
             var mRepo = mockdata.AddUserMock();
             var controller = new UserController(mRepo.Object);
             var _lead = new Users()
@@ -39,14 +39,8 @@ namespace BookYourShow.Api.Test
                 ContactNumber = 9988667544
             };
 
-
-
-            //act
             var result = await controller.AddUser(_lead);
 
-
-
-            //assert
             Assert.IsType<OkObjectResult>(result);
 
 
