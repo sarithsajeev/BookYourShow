@@ -29,28 +29,22 @@ namespace BookYourShow.Api.Test.MockData
         public static Mock<IUserRepository> AddUserMock()
         {
             var users = new List<Users>()
-{
-new Users()
-{
-UserId= 103,
-UserName = "Test1",
-Email ="Test1@gmail.com",
-Password= "Test1@123",
-ContactNumber=9988665544
-}
-};
-
-
-
+            {
+                new Users()
+                {
+                    UserId= 103,
+                    UserName = "Test1",
+                    Email ="Test1@gmail.com",
+                    Password= "Test1@123",
+                    ContactNumber=9988665544
+                }
+            };
             var mockRepo = new Mock<IUserRepository>();
             mockRepo.Setup(r => r.AddUser(It.IsAny<Users>())).ReturnsAsync((Users user) =>
             {
                 users.Add(user);
                 return user.UserId;
             });
-
-
-
             return mockRepo;
         }
     }

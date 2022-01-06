@@ -9,16 +9,15 @@ using System.Threading.Tasks;
 
 namespace BookYourShow.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("user")]
     [ApiController]
     public class UserController : ControllerBase
     {
-        IUserRepository loginRepository;
+        IUserRepository userRepository;
 
         public UserController(IUserRepository _l)
         {
-
-            loginRepository = _l;
+            userRepository = _l;
         }
 
         [HttpGet]
@@ -26,40 +25,30 @@ namespace BookYourShow.Api.Controllers
         [ProducesResponseType(404)]
         public async Task<IActionResult> GetUsers()
         {
-
-            var users = await loginRepository.GetUsers();
+            var users = await userRepository.GetUsers();
             if (users == null)
             {
                 return NotFound();
             }
             return Ok(users);
-
         }
 
         [HttpPost]
-        //[Route("AddUser")]
+        [ProducesResponseType(typeof(Users), 200)]
+        [ProducesResponseType(404)]
         public async Task<IActionResult> AddUser([FromBody] Users model)
         {
-            //check the validation of body
             if (ModelState.IsValid)
             {
-                try
-                {
-                    var uId = await loginRepository.AddUser(model);
-                    if (uId > 0)
+                    var userId = await userRepository.AddUser(model);
+                    if (userId > 0)
                     {
-                        //return ();
-                        return Ok(uId);
+                        return Ok(userId);
                     }
                     else
                     {
                         return NotFound();
                     }
-                }
-                catch (Exception)
-                {
-                    return BadRequest();
-                }
             }
             return BadRequest();
         }
