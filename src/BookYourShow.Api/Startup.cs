@@ -1,6 +1,9 @@
+using BookYourShow.Api.Repository;
+using BookYourShow.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,7 +28,14 @@ namespace BookYourShow.Api
         public void ConfigureServices(IServiceCollection services)
         {
             // Add services over here.
+            services.AddDbContext<BookYourShowContext>(
+                         item => item.UseSqlServer(Configuration.GetConnectionString("ConStr"))
+                         );
 
+
+            services.AddScoped<IActorRepo, ActorRepo>();
+            services.AddScoped<ICrewRepo, CrewRepo>();
+            services.AddScoped<ICastsRepo, CastsRepo>();
             //.......................
 
             services.AddSwaggerGen();
