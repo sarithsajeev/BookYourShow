@@ -1,5 +1,4 @@
-﻿
-using BookYourShow.Models;
+﻿using BookYourShow.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,7 +11,6 @@ namespace BookYourShowAPI.Repositories
     public class TheatreRepo:ITheatreRepo
     {
         BookYourShowContext db;
-        //constructor dependency injection
         public TheatreRepo(BookYourShowContext _db)
         {
             db = _db;
@@ -37,7 +35,6 @@ namespace BookYourShowAPI.Repositories
             {
                 return await db.Theatre.ToListAsync();
             }
-
             return null;
         }
         #endregion
@@ -54,8 +51,6 @@ namespace BookYourShowAPI.Repositories
         }
         #endregion
 
-        
-
         #region Update Theatre
 
         public async Task<bool> UpdateTheatre(Theatre theatre)
@@ -68,9 +63,6 @@ namespace BookYourShowAPI.Repositories
             }
             return false;
         }
-
-
         #endregion
-
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BookYourShowAPI.Controllers
 {
-    [Route("[controller]")]
+    [Route("theatre")]
     [ApiController]
     public class TheatreController : ControllerBase
     {
@@ -28,17 +28,12 @@ namespace BookYourShowAPI.Controllers
         
         public async Task<IActionResult> GetTheatre()
         {
-
             var theatres = await theatreRepository.GetTheatre();
-            //throw new Exception("Exception occurred!");
             if (theatres == null)
             {
                 return NotFound();
             }
             return Ok(theatres);
-
-
-
         }
         #endregion
 
@@ -55,12 +50,8 @@ namespace BookYourShowAPI.Controllers
                 return NotFound();
             }
             return Ok(theatre);
-
         }
         #endregion
-
-       
-
 
         #region Add Theatre
 
@@ -68,15 +59,12 @@ namespace BookYourShowAPI.Controllers
         [ProducesResponseType(typeof(Theatre), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(400)]
-        //[Authorize(AuthenticationSchemes = "Bearer")]
-        //[Route("addtheatre")]
-
+        
         public async Task<IActionResult> AddTheatre([FromBody] Theatre theatre)
         {
             // check the validation of body
             if (ModelState.IsValid)
             {
-
                 var theatreId = await theatreRepository.AddTheatre(theatre);
                 if (theatreId > 0)
                 {
@@ -98,10 +86,8 @@ namespace BookYourShowAPI.Controllers
         [ProducesResponseType(404)]
         [ProducesResponseType(400)]
         
-        //[Route("updatetheatre")]
         public async Task<IActionResult> UpdateTheatre([FromBody] Theatre theatre)
         {
-            //check the validation of body
             if (ModelState.IsValid)
             {
                var _theatre= await theatreRepository.UpdateTheatre(theatre);
@@ -110,12 +96,9 @@ namespace BookYourShowAPI.Controllers
                     return Ok(_theatre);
                 }
                 return BadRequest();
-
             }
             return BadRequest();
-        }
-
-       
+        }  
         #endregion
     }
 }

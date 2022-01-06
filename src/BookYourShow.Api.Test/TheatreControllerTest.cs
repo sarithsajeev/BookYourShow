@@ -19,12 +19,8 @@ namespace BookYourShowTest
             mockRepo.Setup(n => n.GetTheatre()).Returns(MockData.GetTheatre());
             var controller = new TheatreController(mockRepo.Object);
 
-
-
             //act
             var result = await controller.GetTheatre();
-
-
 
             //assert
             Assert.IsType<OkObjectResult>(result);
@@ -42,7 +38,6 @@ namespace BookYourShowTest
 
             //assert
             Assert.IsType<OkObjectResult>(result);
-
         }
 
         [Fact]
@@ -84,13 +79,9 @@ namespace BookYourShowTest
             //act
             var result = await controller.UpdateTheatre(_theatre);
 
-
             //assert
             Assert.IsType<OkObjectResult>(result);
-
-
         }
-
     }
 }
 
