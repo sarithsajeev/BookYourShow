@@ -1,6 +1,7 @@
 using BookYourShow.Controllers;
 using BookYourShow.Models;
-using BookYourShow.Repository;
+using BookYourShow.Api.Repository;
+
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System;
@@ -19,16 +20,16 @@ namespace BookYourShow.Api.Test
             mockRepo.Setup(n => n.GetCities()).Returns(MockData.CityMockData.GetAllCities());
             var controller = new CityController(mockRepo.Object);
             //act
-            var result = await controller.GetCity();
+            var result = await controller.GetCities();
             //assert
             Assert.IsType<OkObjectResult>(result);
         }
         [Fact]
-        public async void GetMoviesFailTest()
+        public async void GetCitiesFailTest()
         {
             var mockRepo = new Mock<ICityRepo>();
             var controller = new CityController(mockRepo.Object);
-            var result = await controller.GetCity();
+            var result = await controller.GetCities();
             Assert.IsType<NotFoundResult>(result);
         }
         #endregion

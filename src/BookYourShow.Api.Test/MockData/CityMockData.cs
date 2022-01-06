@@ -1,5 +1,5 @@
 ﻿using BookYourShow.Models;
-using BookYourShow.Repository;
+using BookYourShow.Api.Repository;
 using Moq;
 using System;
 using System.Collections.Generic;
