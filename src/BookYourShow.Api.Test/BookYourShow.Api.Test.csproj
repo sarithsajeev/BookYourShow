@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="ActorsTest.csproj" />
+    <None Include="CastsApiTest.csproj" />
+    <None Include="CrewApiTest.csproj" />
+    <None Include="MovieCrewTest.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
 	  <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
 	  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
 	  <PackageReference Include="Moq" Version="4.16.1" />

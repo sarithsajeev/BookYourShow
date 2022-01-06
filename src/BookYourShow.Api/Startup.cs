@@ -1,5 +1,7 @@
 using BookYourShow.Repository;
 using BookYourShow.Models;
+using BookYourShow.Api.Repository;
+using BookYourShow.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +36,9 @@ namespace BookYourShow.Api
 
 
             services.AddScoped<ITicketsRepo, TicketsRepo>();
+            services.AddScoped<IActorRepo, ActorRepo>();
+            services.AddScoped<ICrewRepo, CrewRepo>();
+            services.AddScoped<ICastsRepo, CastsRepo>();
             //.......................
 
             services.AddSwaggerGen();
