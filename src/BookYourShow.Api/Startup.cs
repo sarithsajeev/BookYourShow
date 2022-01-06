@@ -33,6 +33,9 @@ namespace BookYourShow.Api
 
             services.AddScoped<ISeatRepository, SeatRepository>();
 
+            services.AddScoped<IActorRepo, ActorRepo>();
+            services.AddScoped<ICrewRepo, CrewRepo>();
+            services.AddScoped<ICastsRepo, CastsRepo>();
             //.......................
 
             services.AddSwaggerGen();
