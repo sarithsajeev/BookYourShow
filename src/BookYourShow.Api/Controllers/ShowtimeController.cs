@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookYourShow.Controllers
 {
-    [Route("[controller]")]
+    [Route("showtime")]
     [ApiController]
     public class ShowTimeController : ControllerBase
     {
@@ -23,28 +23,24 @@ namespace BookYourShow.Controllers
         [ProducesResponseType(typeof(ShowTime), 200)]
         [ProducesResponseType(404)]
 
-
         public async Task<IActionResult> GetShowTime()
         {
-
             var showtime = await showtimeRepository.GetShowTime();
             if (showtime == null)
             {
                 return NotFound();
             }
             return Ok(showtime);
-
         }
+
         [HttpPost]
         [ProducesResponseType(typeof(ShowTime), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(400)]
         public async Task<IActionResult> AddShowTime(ShowTime showtime)
         {
-            //check the validation of body
             if (ModelState.IsValid)
             {
-
                 var resId = await showtimeRepository.AddShowTime(showtime);
                 if (resId != null)
                 {
@@ -54,19 +50,15 @@ namespace BookYourShow.Controllers
                 {
                     return NotFound();
                 }
-
             }
             return BadRequest();
         }
 
-
         [HttpPut]
-
         [ProducesResponseType(typeof(ShowTime), 200)]
         [ProducesResponseType(404)]
         public async Task<IActionResult> UpdateShowTime([FromBody] ShowTime model)
         {
-            //check the validation of body
             if (ModelState.IsValid)
             {
                 var show=await showtimeRepository.UpdateShowTime(model);
@@ -75,19 +67,16 @@ namespace BookYourShow.Controllers
                     return Ok(show);
                 }
                 return BadRequest();
-
             }
             return BadRequest();
         }
 
-
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(ShowTime), 200)]
         [ProducesResponseType(404)]
-        //[TypeFilter(typeof(CustomExceptionFilter))]
+       
         public async Task<IActionResult> GetShowTimeById(int id)
         {
-            //throw new Exception("New Exception");
             var showtime = await showtimeRepository.GetShowTimeById(id);
             if (showtime == null)
             {
@@ -95,6 +84,5 @@ namespace BookYourShow.Controllers
             }
             return Ok(showtime);
         }
-
     }
 }

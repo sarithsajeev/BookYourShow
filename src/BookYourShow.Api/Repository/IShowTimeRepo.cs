@@ -16,7 +16,6 @@ namespace BookYourShow.Repository
         /// <returns></returns>
         Task<ShowTime> AddShowTime(ShowTime showTime);
 
-
         /// <summary>
         /// display showtime 
         /// </summary>
@@ -24,7 +23,10 @@ namespace BookYourShow.Repository
         Task<List<ShowTimeView>> GetShowTime();
 
         Task<ShowTimeView> GetShowTimeById(int id);
-
+        /// <summary>
+        /// update showtime 
+        /// </summary>
+        /// <returns></returns>
         Task<bool> UpdateShowTime(ShowTime showtime);
     }
 }
