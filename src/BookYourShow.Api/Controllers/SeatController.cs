@@ -1,5 +1,5 @@
 ﻿using BookYourShow.Models;
-using BookYourShow.Repository;
+using BookYourShow.Api.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
