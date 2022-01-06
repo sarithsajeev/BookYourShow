@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace TicketsTest
 {
-    public class UnitTest1
+    public class ViewTicketsTest
     {
         [Theory]
         [InlineData(1,100)]
