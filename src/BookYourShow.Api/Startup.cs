@@ -32,7 +32,7 @@ namespace BookYourShow.Api
 
             // Add dependency injection
             services.AddDbContext<BookYourShowContext>(
-               options => options.UseSqlServer(Configuration.GetConnectionString("constr"))
+               options => options.UseSqlServer(Configuration.GetConnectionString("ConStr"))
                    );
 
             services.AddSwaggerGen();
