@@ -25,6 +25,17 @@ namespace BookYourShow.Api
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add services over here.
+            services.AddDbContext<BookYourShowContext>(
+                         item => item.UseSqlServer(Configuration.GetConnectionString("ConStr"))
+                         );
+
+
+            services.AddScoped<IActorRepo, ActorRepo>();
+            services.AddScoped<ICrewRepo, CrewRepo>();
+            services.AddScoped<ICastsRepo, CastsRepo>();
+            //.......................
+
             services.AddDbContext<BookYourShowContext>(item =>
             item.UseSqlServer(Configuration.GetConnectionString("BookYourShowConnection")));
             services.AddScoped<IOfferRepository, OfferRepository>();
