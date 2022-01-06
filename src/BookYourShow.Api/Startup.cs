@@ -31,7 +31,7 @@ namespace BookYourShow.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<BookYourShowContext>(item =>
-            item.UseSqlServer(Configuration.GetConnectionString("DBConnection"))
+            item.UseSqlServer(Configuration.GetConnectionString("ConStr"))
             );
             services.AddScoped<ILoginRepository, LoginRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
@@ -39,7 +39,6 @@ namespace BookYourShow.Api
             .AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
-
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
@@ -51,7 +50,6 @@ namespace BookYourShow.Api
                 };
             }
             );
-
             services.AddSwaggerGen();
             services.AddCors();
             services.AddControllers();
