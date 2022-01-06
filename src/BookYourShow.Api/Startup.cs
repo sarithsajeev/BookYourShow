@@ -1,3 +1,4 @@
+using BookYourShow.Api.Repository;
 using BookYourShow.Models;
 using BookYourShowAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -34,6 +35,9 @@ namespace BookYourShow.Api
                options => options.UseSqlServer(Configuration.GetConnectionString("constr"))
                    );
 
+            services.AddScoped<IActorRepo, ActorRepo>();
+            services.AddScoped<ICrewRepo, CrewRepo>();
+            services.AddScoped<ICastsRepo, CastsRepo>();
             services.AddScoped<ITheatreRepo, TheatreRepo>();
             //.......................
 
