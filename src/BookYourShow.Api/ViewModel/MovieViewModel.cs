@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BookYourShow.Api.ViewModel
 {
-    public class MovieViewModel
+    public class MovieViewModel 
     {
         public int? MovieId { get; set; }
         public string MovieTitle { get; set; }
