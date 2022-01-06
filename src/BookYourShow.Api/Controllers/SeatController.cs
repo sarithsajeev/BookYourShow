@@ -90,7 +90,7 @@ namespace BookYourShow.Controllers
         [HttpGet("{seatId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Route("theatre/{tId}/seat/{id}")]
+        
 
         public async Task<IActionResult> GetSeatById(int tId, int seatId)
         {
