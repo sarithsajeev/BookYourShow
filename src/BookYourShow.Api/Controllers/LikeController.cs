@@ -9,13 +9,10 @@ using System.Threading.Tasks;
 
 namespace BookYourShow.Controllers
 {
-    [Route("[controller]")]
+    [Route("likes")]
     [ApiController]
     public class LikeController : ControllerBase
     {
-        //Constructor Dependency Injection for LikeRepo
-        //1.Default constructor - LikeController
-        //2.ILikeRepo
 
         ILikeRepo likeRepository;
         public LikeController(ILikeRepo _p)
@@ -30,10 +27,8 @@ namespace BookYourShow.Controllers
 
         public async Task<IActionResult> AddLike([FromBody] Likes model)
         {
-            //check the validation of body
             if (ModelState.IsValid)
             {
-
                 var likeId = await likeRepository.AddLike(model);
                 if (likeId > 0)
                 {
@@ -43,7 +38,6 @@ namespace BookYourShow.Controllers
                 {
                     return NotFound();
                 }
-
             }
             return BadRequest();
         }
@@ -52,19 +46,15 @@ namespace BookYourShow.Controllers
         [ProducesResponseType(typeof(Likes), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(400)]
-        //[Route("UpdateAppointment")]
         public async Task<IActionResult> UpdateLike([FromBody] Likes model)
         {
-            //check the validation of body
             if (ModelState.IsValid)
-            {
-                
+            {              
                 var like = await likeRepository.UpdateLike(model);
                 if (like)
                 {
                     return Ok(like);
                 }
-
                 return BadRequest();
             }
             return BadRequest();
@@ -75,24 +65,19 @@ namespace BookYourShow.Controllers
         [ProducesResponseType(404)]
         public async Task<IActionResult> GetLike()
         {
-
             var like = await likeRepository.GetLike();
             if (like == null)
             {
                 return NotFound();
             }
             return Ok(like);
-
-
         }
 
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(Likes), 200)]
         [ProducesResponseType(404)]
-        //[TypeFilter(typeof(CustomExceptionFilter))]
         public async Task<IActionResult> GetLikeById(int id)
         {
-            //throw new Exception("New Exception");
             var like = await likeRepository.GetLikeById(id);
             if (like == null)
             {
