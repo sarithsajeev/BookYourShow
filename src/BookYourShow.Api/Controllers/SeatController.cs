@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookYourShow.Controllers
 {
-    [Route("api")]
+    [Route("theatre/{tId}/seat")]
     [ApiController]
     public class SeatController : ControllerBase
     {
@@ -23,7 +23,7 @@ namespace BookYourShow.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Route("Theatre/{tId}/Seats")]
+        
         public async Task<IActionResult> GetSeats(int tId)
         {
 
@@ -42,7 +42,7 @@ namespace BookYourShow.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [Route("Theatre/{tId}/Seats")]
+        
 
         public async Task<IActionResult> AddSeat([FromBody] Seats seat, int tId)
         {
@@ -68,8 +68,8 @@ namespace BookYourShow.Controllers
         #endregion
 
         #region update  a seat details
-        [HttpPut]
-        [Route("Theatre/{tId}/Seats")]
+        [HttpPut("{seatId}")]
+        
 
         public async Task<IActionResult> UpdateSeat([FromBody] Seats seat, int tId)
         {
@@ -87,15 +87,14 @@ namespace BookYourShow.Controllers
         #endregion
 
         #region get seat by Id
-        [HttpGet]
+        [HttpGet("{seatId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Route("theatre/{tId}/seat/{id}")]
 
-        public async Task<IActionResult> GetSeatById(int id,int tId)
+        public async Task<IActionResult> GetSeatById(int tId, int seatId)
         {
 
-            var s = await seatRepo.GetSeatById(id,tId);
+            var s = await seatRepo.GetSeatById(tId, seatId);
 
             if (s == null)
             {

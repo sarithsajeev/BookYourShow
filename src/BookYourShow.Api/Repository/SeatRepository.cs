@@ -35,9 +35,9 @@ namespace BookYourShow.Repository
 
         #region get seat by Id
 
-        public async Task<Seats> GetSeatById(int Id,int tId)
+        public async Task<Seats> GetSeatById(int tId, int seatId)
         {
-            var s = db.Seats.FirstOrDefault(em => em.SeatId == Id);
+            var s = db.Seats.FirstOrDefault(em => em.SeatId == seatId && em.TheatreId == tId);
 
             if (s!=null)
 
