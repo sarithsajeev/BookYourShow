@@ -2,6 +2,7 @@ using BookYourShow.Api.Repository;
 using BookYourShow.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using BookYourShow.Repository;
+using BookYourShowAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +17,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BookYourShowAPI.Repositories;
 
 namespace BookYourShow.Api
 {
@@ -55,16 +55,34 @@ namespace BookYourShow.Api
 
             services.AddScoped<ISeatRepository, SeatRepository>();
             services.AddScoped<IReservationRepo, ReservationRepo>();
+
+            services.AddScoped<ITicketsRepo, TicketsRepo>();
             services.AddScoped<IActorRepo, ActorRepo>();
             services.AddScoped<ICrewRepo, CrewRepo>();
             services.AddScoped<ICastsRepo, CastsRepo>();
             services.AddScoped<ITheatreRepo, TheatreRepo>();
+            services.AddScoped<IOfferRepository, OfferRepository>();
             services.AddScoped<IReviewsrepo, Reviewsrepo>();
+            //.......................
             
-             services.AddSwaggerGen();
+            services.AddScoped<IReviewsrepo, Reviewsrepo>();
+           
+            services.AddControllers();
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<ILanguageRepository, LanguageRepository>();
+            services.AddScoped<IGenreRepository, GenreRepository>();
+            
+            services.AddScoped<ILikeRepo, LikeRepo>();
+
+            // Add dependency injection
+            services.AddDbContext<BookYourShowContext>(
+               options => options.UseSqlServer(Configuration.GetConnectionString("ConStr"))
+                   );
+
+            services.AddSwaggerGen();
             services.AddCors();
             services.AddControllers();
-           
+            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
