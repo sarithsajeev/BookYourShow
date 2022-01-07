@@ -1,5 +1,7 @@
+using BookYourShow.Api.Repository;
 using BookYourShow.Models;
 using BookYourShow.Repository;
+using BookYourShowAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -23,10 +25,33 @@ namespace BookYourShow.Api
         }
 
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           
+            // Add services over here.
+            services.AddControllers();
+            // Add dependency injection
+                 
+           
+
+            services.AddScoped<ISeatRepository, SeatRepository>();
+            services.AddScoped<IReservationRepo, ReservationRepo>();
+
+            services.AddScoped<ITicketsRepo, TicketsRepo>();
+            services.AddScoped<IActorRepo, ActorRepo>();
+            services.AddScoped<ICrewRepo, CrewRepo>();
+            services.AddScoped<ICastsRepo, CastsRepo>();
+            services.AddScoped<ITheatreRepo, TheatreRepo>();
+            services.AddScoped<IOfferRepository, OfferRepository>();
+            services.AddScoped<IReviewsrepo, Reviewsrepo>();
+            //.......................
+            
+            services.AddScoped<IReviewsrepo, Reviewsrepo>();
+           
+            services.AddControllers();
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<ILanguageRepository, LanguageRepository>();
+            services.AddScoped<IGenreRepository, GenreRepository>();
             
             services.AddScoped<ILikeRepo, LikeRepo>();
 
@@ -40,8 +65,6 @@ namespace BookYourShow.Api
             services.AddControllers();
             
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
