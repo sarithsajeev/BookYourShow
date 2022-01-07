@@ -1,6 +1,6 @@
-using BookYourShow.Api.Repository;
 using BookYourShow.Models;
-using BookYourShowAPI.Repositories;
+using BookYourShow.Api.Repository;
+using BookYourShow.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +35,9 @@ namespace BookYourShow.Api
                options => options.UseSqlServer(Configuration.GetConnectionString("constr"))
                    );
 
+            services.AddScoped<ISeatRepository, SeatRepository>();
+            services.AddScoped<IReservationRepo, ReservationRepo>();
+
             services.AddScoped<IActorRepo, ActorRepo>();
             services.AddScoped<ICrewRepo, CrewRepo>();
             services.AddScoped<ICastsRepo, CastsRepo>();
@@ -44,6 +47,7 @@ namespace BookYourShow.Api
             services.AddSwaggerGen();
             services.AddCors();
             services.AddControllers();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
