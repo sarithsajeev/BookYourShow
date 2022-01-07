@@ -35,8 +35,7 @@ namespace BookYourShow.Api
             services.AddDbContext<BookYourShowContext>(item =>
             item.UseSqlServer(Configuration.GetConnectionString("ConStr"))
             );
-            services.AddScoped<ILoginRepository, LoginRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
+           
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
@@ -55,7 +54,8 @@ namespace BookYourShow.Api
 
             services.AddScoped<ISeatRepository, SeatRepository>();
             services.AddScoped<IReservationRepo, ReservationRepo>();
-
+            services.AddScoped<ILoginRepository, LoginRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITicketsRepo, TicketsRepo>();
             services.AddScoped<IActorRepo, ActorRepo>();
             services.AddScoped<ICrewRepo, CrewRepo>();
@@ -63,22 +63,11 @@ namespace BookYourShow.Api
             services.AddScoped<ITheatreRepo, TheatreRepo>();
             services.AddScoped<IOfferRepository, OfferRepository>();
             services.AddScoped<IReviewsrepo, Reviewsrepo>();
-            //.......................
-            
-            services.AddScoped<IReviewsrepo, Reviewsrepo>();
-           
-            services.AddControllers();
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
             
             services.AddScoped<ILikeRepo, LikeRepo>();
-
-            // Add dependency injection
-            services.AddDbContext<BookYourShowContext>(
-               options => options.UseSqlServer(Configuration.GetConnectionString("ConStr"))
-                   );
-
             services.AddSwaggerGen();
             services.AddCors();
             services.AddControllers();
