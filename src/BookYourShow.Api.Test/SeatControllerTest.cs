@@ -1,7 +1,6 @@
+using BookYourShow.Api.Repository;
 using BookYourShow.Controllers;
-
 using BookYourShow.Models;
-using BookYourShow.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System;

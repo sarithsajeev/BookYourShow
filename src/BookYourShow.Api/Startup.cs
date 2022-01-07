@@ -39,6 +39,7 @@ namespace BookYourShow.Api
             services.AddScoped<IActorRepo, ActorRepo>();
             services.AddScoped<ICrewRepo, CrewRepo>();
             services.AddScoped<ICastsRepo, CastsRepo>();
+            services.AddScoped<IMovieCrewRepo, MovieCrewRepo>();
             //.......................
 
             services.AddSwaggerGen();
