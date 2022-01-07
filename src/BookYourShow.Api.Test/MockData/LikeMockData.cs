@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookYourShow.MockData
 {
-    public class MockData
+    public class LikeMockData
     {
         public static async Task<List<LikeViewModel>> GetLike()
         {
