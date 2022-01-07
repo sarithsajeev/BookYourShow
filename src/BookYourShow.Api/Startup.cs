@@ -1,4 +1,7 @@
 using BookYourShow.Api.Repository;
+using BookYourShow.Models;
+using BookYourShow.Repository;
+using BookYourShowAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +33,7 @@ namespace BookYourShow.Api
             services.AddControllers();
             // Add dependency injection
             services.AddDbContext<BookYourShowContext>(
-               options => options.UseSqlServer(Configuration.GetConnectionString("constr"))
+               options => options.UseSqlServer(Configuration.GetConnectionString("ConStr"))
                    );
 
             services.AddScoped<ISeatRepository, SeatRepository>();
