@@ -1,50 +1,90 @@
-﻿using BookYourShow.Api.Repository;
-using BookYourShow.Models;
+﻿using BookYourShow.Models;
+using BookYourShowAPI.Repositories;
 using Moq;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 
-namespace BookYourShow.Api.Test.MockData
+namespace BookYourShowAPI.MockData
 {
-    public class mockdata
+    public class MockData
     {
-        public static async Task<List<Users>> GetUserDetails()
+        public static async Task<List<Theatre>> GetTheatre()
         {
-            var _users = new List<Users>()
-            {
-                new Users()
-                {
-                    UserId = 101,
-                    UserName = "Yadhu",
-                    Email = "yadhuemofficial@gmail.com",
-                    Password = "yadhu@123",
-                    ContactNumber =9988776655
-                }
-            };
-            return _users;
+          var _theatres = new List<Theatre>()
+          { 
+            new Theatre()
+            { 
+                TheatreId =10,
+                TheatreName = "Pluto Ciniplex",
+                Location="Gayatripuram",
+                CityId=1,
+                IsActive=true
+            }
+          };
+            return _theatres;
         }
 
-        public static Mock<IUserRepository> AddUserMock()
+        public static Mock<ITheatreRepo> GetTheatreByIdMock()
         {
-            var users = new List<Users>()
+            var _theatre = new Theatre()
             {
-                new Users()
-                {
-                    UserId= 103,
-                    UserName = "Test1",
-                    Email ="Test1@gmail.com",
-                    Password= "Test1@123",
-                    ContactNumber=9988665544
-                }
+                TheatreId = 1,
+                TheatreName = "Pluto Ciniplex",
+                Location = "Gayatripuram",
+                CityId = 1,
+                IsActive = true
             };
-            var mockRepo = new Mock<IUserRepository>();
-            mockRepo.Setup(r => r.AddUser(It.IsAny<Users>())).ReturnsAsync((Users user) =>
+
+            var mockRepo = new Mock<ITheatreRepo>();
+            mockRepo.Setup(r => r.GetTheatreById(1)).ReturnsAsync(_theatre);
+            return mockRepo;
+        }
+
+        public static Mock<ITheatreRepo> AddTheatreRepoMock()
+        {
+          var _theatres = new List<Theatre>()
+          {
+           new Theatre()
+           {
+                TheatreId =11,
+                TheatreName = "PLR Ciniplex",
+                Location="lakshmipuram",
+                CityId=1,
+                IsActive=true
+           },
+           new Theatre()
+           {
+                TheatreId =12,
+                TheatreName = "BMT Ciniplex",
+                Location="Vijayanagar",
+                CityId=2,
+                IsActive=true
+           },
+         };
+            var mockRepo = new Mock<ITheatreRepo>();
+            mockRepo.Setup(r => r.AddTheatre(It.IsAny<Theatre>())).ReturnsAsync((Theatre theatre) =>
             {
-                users.Add(user);
-                return user.UserId;
+                _theatres.Add(theatre);
+                return theatre.TheatreId;
             });
+            return mockRepo;
+        }
+
+        public static Mock<ITheatreRepo> UpdateTheatreMock()
+        {
+            var _theatre = new Theatre()
+            {
+                TheatreId = 12,
+                TheatreName = "BMT Ciniplex",
+                Location = "Vijayanagar",
+                CityId = 2,
+                IsActive = true
+            };
+
+            var mockRepo = new Mock<ITheatreRepo>();
+            mockRepo.Setup(r => r.UpdateTheatre(It.IsAny<Theatre>())).ReturnsAsync(true);
             return mockRepo;
         }
     }
