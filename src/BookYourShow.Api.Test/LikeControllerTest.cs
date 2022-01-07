@@ -16,7 +16,7 @@ namespace TestProject1
         {
             //arrange
             var mockRepo = new Mock<ILikeRepo>();
-            mockRepo.Setup(n => n.GetLike()).Returns(MockData.GetLike());
+            mockRepo.Setup(n => n.GetLike()).Returns(LikeMockData.GetLike());
             var controller = new LikeController(mockRepo.Object);
             
             //act
@@ -30,7 +30,7 @@ namespace TestProject1
         public async void AddLikeTest()
         {
             //arrange
-            var mRepo = MockData.AddLikeMock();
+            var mRepo = LikeMockData.AddLikeMock();
             var controller = new LikeController(mRepo.Object);
             var _lead = new Likes()
             {
@@ -53,7 +53,7 @@ namespace TestProject1
         public async void GetLikesByIdTest()
         {
             //arrange
-            var mRepo = MockData.GetLikeByIdMock();
+            var mRepo = LikeMockData.GetLikeByIdMock();
             var controller = new LikeController(mRepo.Object);
        
             //act
@@ -69,7 +69,7 @@ namespace TestProject1
         public async void UpdateLikeTest()
         {
             //arrange
-            var mRepo = MockData.UpdateLikeMock();
+            var mRepo = LikeMockData.UpdateLikeMock();
             var controller = new LikeController(mRepo.Object);
             var _lead = new Likes()
             {
