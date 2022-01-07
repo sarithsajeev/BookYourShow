@@ -32,7 +32,7 @@ namespace BookYourShow.Api
             services.AddControllers();
             // Add dependency injection
             services.AddDbContext<BookYourShowContext>(
-               options => options.UseSqlServer(Configuration.GetConnectionString("constr"))
+               options => options.UseSqlServer(Configuration.GetConnectionString("ConStr"))
                    );       
            
 
@@ -55,9 +55,7 @@ namespace BookYourShow.Api
             services.AddSwaggerGen();
             services.AddCors();
             services.AddControllers();
-            services.AddDbContext<BookYourShowContext>(item =>
-            item.UseSqlServer(Configuration.GetConnectionString("EmpDBConnection"))
-            );
+        
 
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
