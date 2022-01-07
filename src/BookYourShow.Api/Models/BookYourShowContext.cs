@@ -39,6 +39,12 @@ namespace BookYourShow.Models
                 optionsBuilder.UseSqlServer("Data Source=AVINJOSEPH\\SQLEXPRESS01; Initial Catalog=BookYourShow; Integrated security=True");
             }
         }
+        }
+        }
+        }
+        }
+        }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
