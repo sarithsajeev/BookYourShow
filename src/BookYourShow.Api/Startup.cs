@@ -27,12 +27,15 @@ namespace BookYourShow.Api
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+           
             // Add services over here.
             services.AddControllers();
             // Add dependency injection
             services.AddDbContext<BookYourShowContext>(
                options => options.UseSqlServer(Configuration.GetConnectionString("constr"))
                    );       
+           
+
             services.AddScoped<ISeatRepository, SeatRepository>();
             services.AddScoped<IReservationRepo, ReservationRepo>();
             services.AddScoped<IActorRepo, ActorRepo>();
