@@ -29,9 +29,11 @@ namespace BookYourShow.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           
+            services.AddDbContext<BookYourShowContext>(
+                         item => item.UseSqlServer(Configuration.GetConnectionString("ConStr"))
+                         );
             // Add services over here.
-           
+
 
             services.AddScoped<ISeatRepository, SeatRepository>();
             services.AddScoped<IReservationRepo, ReservationRepo>();
@@ -42,12 +44,8 @@ namespace BookYourShow.Api
             services.AddScoped<ICastsRepo, CastsRepo>();
             services.AddScoped<ITheatreRepo, TheatreRepo>();
             //.......................
-            services.AddDbContext<BookYourShowContext>(
-                         item => item.UseSqlServer(Configuration.GetConnectionString("ConStr"))
-                         );
+           
             services.AddScoped<IReviewsrepo, Reviewsrepo>();
-            services.AddDbContext<BookYourShowContext>(item => item.UseSqlServer(Configuration.GetConnectionString("ConStr")));
-            services.AddControllers();
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
