@@ -31,9 +31,7 @@ namespace BookYourShow.Api
             // Add services over here.
             services.AddControllers();
             // Add dependency injection
-            services.AddDbContext<BookYourShowContext>(
-               options => options.UseSqlServer(Configuration.GetConnectionString("constr"))
-                   );       
+                 
            
 
             services.AddScoped<ISeatRepository, SeatRepository>();
@@ -49,18 +47,23 @@ namespace BookYourShow.Api
             //.......................
             
             services.AddScoped<IReviewsrepo, Reviewsrepo>();
-            services.AddDbContext<BookYourShowContext>(item => item.UseSqlServer(Configuration.GetConnectionString("ConStr")));
+           
             services.AddControllers();
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
+            
+            services.AddScoped<ILikeRepo, LikeRepo>();
+
+            // Add dependency injection
+            services.AddDbContext<BookYourShowContext>(
+               options => options.UseSqlServer(Configuration.GetConnectionString("ConStr"))
+                   );
+
             services.AddSwaggerGen();
             services.AddCors();
             services.AddControllers();
-            services.AddDbContext<BookYourShowContext>(item =>
-            item.UseSqlServer(Configuration.GetConnectionString("EmpDBConnection"))
-            );
-
+            
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
