@@ -96,7 +96,7 @@ namespace BookYourShow.Models
                 entity.Property(e => e.MemberName)
                     .HasMaxLength(30)
                     .IsUnicode(false);
-            });
+            });    
 
             modelBuilder.Entity<Genres>(entity =>
             {
