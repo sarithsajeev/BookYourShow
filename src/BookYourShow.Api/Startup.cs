@@ -30,10 +30,6 @@ namespace BookYourShow.Api
            
             // Add services over here.
             services.AddControllers();
-            // Add dependency injection
-                 
-           
-
             services.AddScoped<ISeatRepository, SeatRepository>();
             services.AddScoped<IReservationRepo, ReservationRepo>();
 
@@ -60,7 +56,7 @@ namespace BookYourShow.Api
 
             services.AddSwaggerGen();
             services.AddCors();
-            services.AddControllers();
+           
             
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
