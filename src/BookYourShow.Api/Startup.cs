@@ -32,13 +32,9 @@ namespace BookYourShow.Api
             // Add dependency injection
             services.AddDbContext<BookYourShowContext>(
                options => options.UseSqlServer(Configuration.GetConnectionString("constr"))
-                   );
-                         item => item.UseSqlServer(Configuration.GetConnectionString("ConStr")));
-                         
-
+                   );       
             services.AddScoped<ISeatRepository, SeatRepository>();
             services.AddScoped<IReservationRepo, ReservationRepo>();
-
             services.AddScoped<IActorRepo, ActorRepo>();
             services.AddScoped<ICrewRepo, CrewRepo>();
             services.AddScoped<ICastsRepo, CastsRepo>();
