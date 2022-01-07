@@ -1,6 +1,7 @@
-using BookYourShow.Models;
 using BookYourShow.Api.Repository;
+using BookYourShow.Models;
 using BookYourShow.Repository;
+using BookYourShowAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BookYourShowAPI.Repositories;
 
 namespace BookYourShow.Api
 {
@@ -38,6 +38,8 @@ namespace BookYourShow.Api
 
             services.AddScoped<ISeatRepository, SeatRepository>();
             services.AddScoped<IReservationRepo, ReservationRepo>();
+
+            services.AddScoped<ITicketsRepo, TicketsRepo>();
             services.AddScoped<IActorRepo, ActorRepo>();
             services.AddScoped<ICrewRepo, CrewRepo>();
             services.AddScoped<ICastsRepo, CastsRepo>();
@@ -45,10 +47,18 @@ namespace BookYourShow.Api
             services.AddScoped<IOfferRepository, OfferRepository>();
             services.AddScoped<IReviewsrepo, Reviewsrepo>();
             //.......................
+            services.AddDbContext<BookYourShowContext>(
+                         item => item.UseSqlServer(Configuration.GetConnectionString("ConStr"))
+                         );
+            services.AddScoped<IReviewsrepo, Reviewsrepo>();
+            services.AddDbContext<BookYourShowContext>(item => item.UseSqlServer(Configuration.GetConnectionString("ConStr")));
+            services.AddControllers();
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<ILanguageRepository, LanguageRepository>();
+            services.AddScoped<IGenreRepository, GenreRepository>();
             services.AddSwaggerGen();
             services.AddCors();
             services.AddControllers();
-           
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
