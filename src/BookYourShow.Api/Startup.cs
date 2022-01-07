@@ -27,11 +27,12 @@ namespace BookYourShow.Api
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BookYourShowContext>(
-                         item => item.UseSqlServer(Configuration.GetConnectionString("ConStr"))
-                         );
+           
             // Add services over here.
-            
+            services.AddControllers();
+            // Add dependency injection
+                 
+           
 
             services.AddScoped<ISeatRepository, SeatRepository>();
             services.AddScoped<IReservationRepo, ReservationRepo>();
@@ -44,12 +45,23 @@ namespace BookYourShow.Api
             services.AddScoped<IOfferRepository, OfferRepository>();
             services.AddScoped<IReviewsrepo, Reviewsrepo>();
             services.AddScoped<IReviewsrepo, Reviewsrepo>();
+           
+            services.AddControllers();
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
+            
+            services.AddScoped<ILikeRepo, LikeRepo>();
+
+            // Add dependency injection
+            services.AddDbContext<BookYourShowContext>(
+               options => options.UseSqlServer(Configuration.GetConnectionString("ConStr"))
+                   );
+
             services.AddSwaggerGen();
             services.AddCors();
             services.AddControllers();
+            
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
