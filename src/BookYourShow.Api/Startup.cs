@@ -47,9 +47,7 @@ namespace BookYourShow.Api
             services.AddScoped<IOfferRepository, OfferRepository>();
             services.AddScoped<IReviewsrepo, Reviewsrepo>();
             //.......................
-            services.AddDbContext<BookYourShowContext>(
-                         item => item.UseSqlServer(Configuration.GetConnectionString("ConStr"))
-                         );
+            
             services.AddScoped<IReviewsrepo, Reviewsrepo>();
             services.AddDbContext<BookYourShowContext>(item => item.UseSqlServer(Configuration.GetConnectionString("ConStr")));
             services.AddControllers();
@@ -59,6 +57,10 @@ namespace BookYourShow.Api
             services.AddSwaggerGen();
             services.AddCors();
             services.AddControllers();
+            services.AddDbContext<BookYourShowContext>(item =>
+            item.UseSqlServer(Configuration.GetConnectionString("EmpDBConnection"))
+            );
+
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
