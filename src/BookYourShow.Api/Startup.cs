@@ -43,6 +43,7 @@ namespace BookYourShow.Api
             services.AddScoped<ICastsRepo, CastsRepo>();
             services.AddScoped<ITheatreRepo, TheatreRepo>();
             services.AddScoped<IOfferRepository, OfferRepository>();
+            services.AddScoped<IReviewsrepo, Reviewsrepo>();
             //.......................
             services.AddSwaggerGen();
             services.AddCors();
