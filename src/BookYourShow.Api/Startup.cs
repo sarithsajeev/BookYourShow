@@ -1,3 +1,6 @@
+using BookYourShow.Models;
+using BookYourShow.Api.Repository;
+using BookYourShow.Repository;
 using BookYourShow.Api.Repository;
 using BookYourShow.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -15,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BookYourShowAPI.Repositories;
 
 namespace BookYourShow.Api
 {
@@ -30,6 +34,22 @@ namespace BookYourShow.Api
         
         public void ConfigureServices(IServiceCollection services)
         {
+           
+            // Add services over here.
+           
+
+            services.AddScoped<ISeatRepository, SeatRepository>();
+            services.AddScoped<IReservationRepo, ReservationRepo>();
+
+            services.AddScoped<IActorRepo, ActorRepo>();
+            services.AddScoped<ICrewRepo, CrewRepo>();
+            services.AddScoped<ICastsRepo, CastsRepo>();
+            services.AddScoped<ITheatreRepo, TheatreRepo>();
+            //.......................
+            services.AddDbContext<BookYourShowContext>(
+                         item => item.UseSqlServer(Configuration.GetConnectionString("ConStr"))
+                         );
+            services.AddScoped<IReviewsrepo, Reviewsrepo>();
             services.AddDbContext<BookYourShowContext>(item =>
             item.UseSqlServer(Configuration.GetConnectionString("ConStr"))
             );
@@ -53,6 +73,7 @@ namespace BookYourShow.Api
             services.AddSwaggerGen();
             services.AddCors();
             services.AddControllers();
+           
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

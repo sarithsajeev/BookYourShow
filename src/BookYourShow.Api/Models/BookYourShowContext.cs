@@ -31,6 +31,7 @@ namespace BookYourShow.Models
         public virtual DbSet<ShowTime> ShowTime { get; set; }
         public virtual DbSet<Theatre> Theatre { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Actors>(entity =>
@@ -87,7 +88,7 @@ namespace BookYourShow.Models
                 entity.Property(e => e.MemberName)
                     .HasMaxLength(30)
                     .IsUnicode(false);
-            });
+            });    
 
             modelBuilder.Entity<Genres>(entity =>
             {
