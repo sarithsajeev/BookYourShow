@@ -37,7 +37,7 @@ namespace BookYourShow.Api
             services.AddScoped<ICrewRepo, CrewRepo>();
             services.AddScoped<ICastsRepo, CastsRepo>();
             //.......................
-            services.AddDbContext<BookYourShowContext>(item => item.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+            services.AddDbContext<BookYourShowContext>(item => item.UseSqlServer(Configuration.GetConnectionString("BookYourShowConnection")));
             services.AddControllers();
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
