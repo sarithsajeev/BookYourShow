@@ -28,13 +28,9 @@ namespace BookYourShow.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           item.UseSqlServer(Configuration.GetConnectionString("BookYourShowConnection")));
-           item.UseSqlServer(Configuration.GetConnectionString("BookYourShowConnection")));
-           item.UseSqlServer(Configuration.GetConnectionString("BookYourShowConnection")));
+           
             // Add services over here.
-            services.AddDbContext<BookYourShowContext>(
-                          item => item.UseSqlServer(Configuration.GetConnectionString("ConStr"))
-                          );
+            
 
             services.AddScoped<ISeatRepository, SeatRepository>();
             services.AddScoped<IReservationRepo, ReservationRepo>();
