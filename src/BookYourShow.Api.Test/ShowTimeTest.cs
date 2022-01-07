@@ -17,7 +17,7 @@ namespace TestProject1
         {
             //arrange
             var mockRepo = new Mock<IShowTimeRepo>();
-            mockRepo.Setup(n => n.GetShowTime()).Returns(MockData.GetAllShowtime());
+            mockRepo.Setup(n => n.GetShowTime()).Returns(ShowTimeMockData.GetAllShowtime());
            
             var controller = new ShowTimeController(mockRepo.Object);
             //act
@@ -31,7 +31,7 @@ namespace TestProject1
         public async void GetShowTimeByIdTest()
         {
             //arrange
-            var mRepo = MockData.GetShowTimeByIdMock();
+            var mRepo = ShowTimeMockData.GetShowTimeByIdMock();
             var controller = new ShowTimeController(mRepo.Object);
 
             //act
@@ -52,7 +52,7 @@ namespace TestProject1
         public async void AddShowTimeTest()
         {
             //arrange
-            var mRepo = MockData.AddShowTimeMock();
+            var mRepo = ShowTimeMockData.AddShowTimeMock();
             var controller = new ShowTimeController(mRepo.Object);
             var _showtime = new ShowTime()
             {
@@ -73,7 +73,7 @@ namespace TestProject1
         public async void UpdateShowtimeTest()
         {
             //arrange
-            var mRepo = MockData.UpdateShowTimeMock();
+            var mRepo = ShowTimeMockData.UpdateShowTimeMock();
             var controller = new ShowTimeController(mRepo.Object);
             var _showtime = new ShowTime()
             {
