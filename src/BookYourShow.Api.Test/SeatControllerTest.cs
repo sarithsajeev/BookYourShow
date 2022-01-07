@@ -1,3 +1,4 @@
+using BookYourShow.Api.Repository;
 using BookYourShow.Controllers;
 
 using BookYourShow.Models;

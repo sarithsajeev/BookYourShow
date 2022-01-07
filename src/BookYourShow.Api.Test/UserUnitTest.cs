@@ -16,7 +16,7 @@ namespace BookYourShow.Api.Test
         {
 
             var mockRepo = new Mock<IUserRepository>();
-            mockRepo.Setup(n => n.GetUsers()).Returns(mockdata.GetUserDetails);
+            mockRepo.Setup(n => n.GetUsers()).Returns(UserMockData.GetUserDetails);
             
             var controller = new UserController(mockRepo.Object);
             var result = await controller.GetUsers();
@@ -28,7 +28,7 @@ namespace BookYourShow.Api.Test
         public async void AddUserTest()
         {
             
-            var mRepo = mockdata.AddUserMock();
+            var mRepo = UserMockData.AddUserMock();
             var controller = new UserController(mRepo.Object);
             var _lead = new Users()
             {
