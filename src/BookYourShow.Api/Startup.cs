@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookYourShowAPI.Repositories;
 
 namespace BookYourShow.Api
 {
@@ -27,7 +28,11 @@ namespace BookYourShow.Api
         public void ConfigureServices(IServiceCollection services)
         {
             // Add services over here.
+            services.AddControllers();
+            // Add dependency injection
             services.AddDbContext<BookYourShowContext>(
+               options => options.UseSqlServer(Configuration.GetConnectionString("constr"))
+                   );
                          item => item.UseSqlServer(Configuration.GetConnectionString("ConStr")));
                          
 
@@ -37,6 +42,7 @@ namespace BookYourShow.Api
             services.AddScoped<IActorRepo, ActorRepo>();
             services.AddScoped<ICrewRepo, CrewRepo>();
             services.AddScoped<ICastsRepo, CastsRepo>();
+            services.AddScoped<ITheatreRepo, TheatreRepo>();
             services.AddScoped<IOfferRepository, OfferRepository>();
             //.......................
             services.AddSwaggerGen();
