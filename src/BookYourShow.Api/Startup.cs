@@ -52,6 +52,14 @@ namespace BookYourShow.Api
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
+            
+            services.AddScoped<ILikeRepo, LikeRepo>();
+
+            // Add dependency injection
+            services.AddDbContext<BookYourShowContext>(
+               options => options.UseSqlServer(Configuration.GetConnectionString("ConStr"))
+                   );
+
             services.AddSwaggerGen();
             services.AddCors();
             services.AddControllers();
