@@ -1,4 +1,5 @@
 using BookYourShow.Models;
+using BookYourShow.Api.Repository;
 using BookYourShow.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookYourShowAPI.Repositories;
 
 namespace BookYourShow.Api
 {
@@ -27,9 +29,20 @@ namespace BookYourShow.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           
+            // Add services over here.
+           
+
+            services.AddScoped<ISeatRepository, SeatRepository>();
+            services.AddScoped<IReservationRepo, ReservationRepo>();
+
+            services.AddScoped<IActorRepo, ActorRepo>();
+            services.AddScoped<ICrewRepo, CrewRepo>();
+            services.AddScoped<ICastsRepo, CastsRepo>();
+            services.AddScoped<ITheatreRepo, TheatreRepo>();
+            //.......................
             
-            services.AddScoped<IShowTimeRepo, ShowTimeRepo>();
-            
+            services.AddScoped<IReviewsrepo, Reviewsrepo>();
             services.AddSwaggerGen();
             services.AddCors();
             services.AddControllers();
