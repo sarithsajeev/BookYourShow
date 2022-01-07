@@ -45,6 +45,11 @@ namespace BookYourShow.Api
                          item => item.UseSqlServer(Configuration.GetConnectionString("ConStr"))
                          );
             services.AddScoped<IReviewsrepo, Reviewsrepo>();
+            services.AddDbContext<BookYourShowContext>(item => item.UseSqlServer(Configuration.GetConnectionString("ConStr")));
+            services.AddControllers();
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<ILanguageRepository, LanguageRepository>();
+            services.AddScoped<IGenreRepository, GenreRepository>();
             services.AddSwaggerGen();
             services.AddCors();
             services.AddControllers();
