@@ -38,7 +38,7 @@ namespace BookYourShow.Api.Test.MockData
                     Password="yadhu@123",
                     ContactNumber=9808767654
                 }
-
+               
             };
 
             var mockRepo = new Mock<IUserRepository>();
