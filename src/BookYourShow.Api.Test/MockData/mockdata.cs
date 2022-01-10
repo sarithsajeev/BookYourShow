@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BookYourShowAPI.MockData
+namespace BookYourShow.Api.Test.MockData
 {
     public class MockData
     {

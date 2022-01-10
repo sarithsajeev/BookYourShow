@@ -1,6 +1,6 @@
 using BookYourShow.Models;
 using BookYourShowAPI.Controllers;
-using BookYourShowAPI.MockData;
+using BookYourShow.Api.Test.MockData;
 using BookYourShowAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Moq;

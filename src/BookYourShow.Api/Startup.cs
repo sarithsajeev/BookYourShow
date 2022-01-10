@@ -63,6 +63,13 @@ namespace BookYourShow.Api
             services.AddScoped<ITheatreRepo, TheatreRepo>();
             services.AddScoped<IOfferRepository, OfferRepository>();
             services.AddScoped<IReviewsrepo, Reviewsrepo>();
+            services.AddScoped<ICityRepo,CityRepo>();
+
+            //.......................
+            
+            services.AddScoped<IReviewsrepo, Reviewsrepo>();
+           
+            services.AddControllers();
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
@@ -71,7 +78,6 @@ namespace BookYourShow.Api
             services.AddSwaggerGen();
             services.AddCors();
             services.AddControllers();
-            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

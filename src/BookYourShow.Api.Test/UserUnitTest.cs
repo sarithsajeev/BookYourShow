@@ -20,7 +20,7 @@ namespace BookYourShow.Api.Test
             
             var controller = new UserController(mockRepo.Object);
             var result = await controller.GetUsers();
-            
+
             Assert.IsType<OkObjectResult>(result);
         }
 

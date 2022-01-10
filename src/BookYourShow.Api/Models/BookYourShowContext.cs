@@ -32,6 +32,14 @@ namespace BookYourShow.Models
         public virtual DbSet<Theatre> Theatre { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("ConStr");
+            }
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Actors>(entity =>
