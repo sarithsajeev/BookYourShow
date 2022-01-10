@@ -32,15 +32,8 @@ namespace BookYourShow.Api
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BookYourShowContext>(item =>
-            item.UseSqlServer(Configuration.GetConnectionString("ConStr"))
-            );
            
-            // Add services over here.
-            services.AddControllers();
             // Add dependency injection
-                 
-           
 
             services.AddScoped<ISeatRepository, SeatRepository>();
             services.AddScoped<IReservationRepo, ReservationRepo>();
@@ -55,7 +48,6 @@ namespace BookYourShow.Api
             services.AddScoped<IReviewsrepo, Reviewsrepo>();
             //.......................
             
-            services.AddScoped<IReviewsrepo, Reviewsrepo>();
            
             services.AddControllers();
             services.AddScoped<IMovieRepository, MovieRepository>();
