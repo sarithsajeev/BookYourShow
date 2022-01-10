@@ -36,7 +36,7 @@ namespace BookYourShow.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=AVINJOSEPH\\SQLEXPRESS01; Initial Catalog=BookYourShow; Integrated security=True");
+                optionsBuilder.UseSqlServer("ConStr");
             }
         }
 

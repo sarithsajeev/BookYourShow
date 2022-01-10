@@ -1,12 +1,11 @@
 using BookYourShow.Controllers;
-using BookYourShow.MockData;
 using BookYourShow.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using Xunit;
 using Moq;
 using BookYourShow.Models;
-using BookYourShow.ViewModel;
+using BookYourShow.MockData;
 
 namespace TestProject1
 {
