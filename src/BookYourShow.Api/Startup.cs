@@ -18,6 +18,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace BookYourShow.Api
 {
     public class Startup
@@ -51,12 +52,9 @@ namespace BookYourShow.Api
                 };
             }
             );
-
+            
             services.AddScoped<ISeatRepository, SeatRepository>();
             services.AddScoped<IReservationRepo, ReservationRepo>();
-            services.AddScoped<ILoginRepository, LoginRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<ITicketsRepo, TicketsRepo>();
             services.AddScoped<IActorRepo, ActorRepo>();
             services.AddScoped<ICrewRepo, CrewRepo>();
             services.AddScoped<ICastsRepo, CastsRepo>();
@@ -66,10 +64,11 @@ namespace BookYourShow.Api
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
-            
+            services.AddScoped<ITicketsRepo, TicketsRepo>();
             services.AddScoped<ILikeRepo, LikeRepo>();
             services.AddSwaggerGen();
             services.AddCors();
+            services.AddControllers();
            
             
         }
